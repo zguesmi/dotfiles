@@ -1,3 +1,39 @@
+#!/bin/sh
+
+##################################
+#            docker              #
+##################################
+
+# compose
+build
+bundle
+config
+create
+down
+events
+exec
+help
+kill
+logs
+pause
+port
+ps
+pull
+push
+restart
+rm
+run
+scale
+start
+stop
+top
+unpause
+up
+alias dc="docker-compose"
+alias dcd="docker-compose down"
+alias dcu="docker-compose up"
+
+# container
 alias dc='docker container'
 alias dca='docker container attach'
 alias dcc='docker container commit'
@@ -25,6 +61,7 @@ alias dcu='docker container unpause'
 alias dcu='docker container update'
 alias dcw='docker container wait'
 
+# image
 alias di='docker image'
 alias dib='docker image build'
 alias dih='docker image history'
@@ -39,12 +76,14 @@ alias dir='docker image rm'
 alias dis='docker image save'
 alias dit='docker image tag'
 
+# manifest
 alias dm='docker manifest'
 alias dma='docker manifest annotate'
 alias dmc='docker manifest create'
 alias dmi='docker manifest inspect'
 alias dmp='docker manifest push'
 
+# network
 alias dn='docker network'
 alias dnc='docker network connect'
 alias dnc='docker network create'
@@ -54,6 +93,7 @@ alias dnl='docker network ls'
 alias dnp='docker network prune'
 alias dnr='docker network rm'
 
+# node
 alias dn='docker node'
 alias dnd='docker node demote'
 alias dni='docker node inspect'
@@ -63,6 +103,7 @@ alias dnp='docker node ps'
 alias dnr='docker node rm'
 alias dnu='docker node update'
 
+# plugin
 alias dp='docker plugin'
 alias dpc='docker plugin create'
 alias dpd='docker plugin disable'
@@ -74,12 +115,14 @@ alias dpr='docker plugin rm'
 alias dps='docker plugin set'
 alias dpu='docker plugin upgrade'
 
+# secret
 alias ds='docker secret'
 alias dsc='docker secret create'
 alias dsi='docker secret inspect'
 alias dsl='docker secret ls'
 alias dsr='docker secret rm'
 
+# service
 alias ds='docker service'
 alias dsc='docker service create'
 alias dsi='docker service inspect'
@@ -91,12 +134,14 @@ alias dsr='docker service rm'
 alias dss='docker service scale'
 alias dsu='docker service update'
 
+# stack
 alias ds='docker stack'
 alias dsd='docker stack deploy'
 alias dsp='docker stack ps'
 alias dsr='docker stack rm'
 alias dss='docker stack services'
 
+# swarm
 alias ds='docker swarm'
 alias dsc='docker swarm ca'
 alias dsi='docker swarm init'
@@ -107,12 +152,14 @@ alias dsu='docker swarm unlock-key'
 alias dsu='docker swarm unlock'
 alias dsu='docker swarm update'
 
+# system
 alias ds='docker system'
 alias dsd='docker system df'
 alias dse='docker system events'
 alias dsi='docker system info'
 alias dsp='docker system prune'
 
+# trust
 alias dt='docker trust'
 alias dti='docker trust inspect'
 alias dtk='docker trust key'
@@ -124,12 +171,79 @@ alias dts='docker trust signer'
 alias dtsa='docker trust signer add'
 alias dtsr='docker trust signer remove'
 
+# volume
 alias dvc='docker volume create'
 alias dvi='docker volume inspect'
 alias dvl='docker volume ls'
 alias dvp='docker volume prune'
 alias dvr='docker volume rm'
 
+# various
 alias di='docker inspect'
 alias dl='docker logs'
 alias ds='docker search'
+## containers
+alias dr="docker run"
+alias drit="docker run -i -t"
+alias drd="docker run -d"
+alias dstr="docker start"
+alias dstrai="docker start -ai"
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias dpsaq="docker ps -a -q"
+alias dpsl="docker ps -l -q"    # latest container ID
+alias dstp="docker stop"
+alias dk="docker kill"
+alias drm="docker rm"
+drma() { docker rm $(docker ps -a -q) }
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias dex="docker exec -i -t"
+db() { docker build -t $1 . }
+
+
+
+alias plz=sudo
+
+##################################
+#          directories           #
+##################################
+
+# Changing/making/removing directory
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
+alias d='dirs -v | head -10'
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
+alias -- -='cd -'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+
+# List directory contents
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
+
+# Push and pop directories on directory stack
+alias pu='pushd'
+alias po='popd'
+
+
+
+
+##################################
+#              git               #
+##################################
