@@ -112,3 +112,85 @@ if [ -f ~/.my_aliases ]; then
 else
     print "404: ~/.my_aliases not found."
 fi
+
+# my ip address
+myip() {
+    ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
+    ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+    ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+    ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+    ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+}
+
+
+# clipcp - Copy data to clipboard
+#
+# Usage:
+#  <command> | clipcp    - copies stdin to clipboard
+#  clipcp <file>         - copies a file's contents to clipboard
+
+clipcp() {
+
+    OSTYPE=$(uname)
+
+    emulate -L zsh
+    local file=$1
+    if [[ $OSTYPE == darwin* ]]; then
+        if [[ -z $file ]]; then
+            pbcopy
+        else
+            cat $file | pbcopy
+        fi
+    elif [[ $OSTYPE == cygwin* ]]; then
+        if [[ -z $file ]]; then
+            cat > /dev/clipboard
+        else
+            cat $file > /dev/clipboard
+        fi
+    else
+        if (( $+commands[xclip] )); then
+            if [[ -z $file ]]; then
+                xclip -in -selection clipboard
+            else
+                xclip -in -selection clipboard $file
+            fi
+        elif (( $+commands[xsel] )); then
+            if [[ -z $file ]]; then
+                xsel --clipboard --input
+            else
+                cat "$file" | xsel --clipboard --input
+            fi
+        else
+            print "clipboard copying/pasting: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
+            return 1
+        fi
+    fi
+}
+
+# clipps - "Paste" data from clipboard to stdout
+#
+# Usage:
+#   clipps   - writes clipboard's contents to stdout
+#   clipps | <command>    - pastes contents and pipes it to another process
+#   clipps > <file>      - paste contents to a file
+
+clipps() {
+
+    OSTYPE=$(uname)
+
+    emulate -L zsh
+    if [[ $OSTYPE == darwin* ]]; then
+        pbpaste
+    elif [[ $OSTYPE == cygwin* ]]; then
+        cat /dev/clipboard
+    else
+        if (( $+commands[xclip] )); then
+            xclip -out -selection clipboard
+        elif (( $+commands[xsel] )); then
+            xsel --clipboard --output
+        else
+            print "clipboard copying/pasting: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
+            return 1
+        fi
+    fi
+}
