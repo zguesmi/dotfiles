@@ -107,10 +107,10 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 unsetopt nomatch
 
 # add my aliases file
-if [ -f ~/.my_aliases ]; then
-    source ~/.my_aliases
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
 else
-    print "404: ~/.my_aliases not found."
+    print "404: '~/.aliases' file not found."
 fi
 
 # my ip address
