@@ -190,10 +190,10 @@ alias dvprune='docker volume prune'
 alias dvrm='docker volume rm'
 
 # various
-alias dinspect='docker inspect'
+alias dins='docker inspect'
+alias dinsf='docker inspect --format "{{ }}" ' ### $1
 alias dlogs='docker logs'
 alias dsearch='docker search'
-alias dinspect='docker inspect --format "{{ }}" ' ### $1
 
 
 ##################################
@@ -235,3 +235,151 @@ alias po='popd'
 ##################################
 #              git               #
 ##################################
+
+alias g='git'
+
+alias ga='git add'
+alias gaa='git add --all'
+alias gap='git add --patch'
+alias gau='git add --update'
+
+alias gapply='git apply'
+
+alias gbi='git bisect'
+alias gbib='git bisect bad'
+alias gbig='git bisect good'
+alias gbir='git bisect reset'
+alias gbis='git bisect start'
+
+alias gbl='git blame -b -w'
+
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbd='git branch -d'
+alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
+alias gbnm='git branch --no-merged'
+alias gbr='git branch --remote'
+
+alias gc='git commit -v'
+alias gc!='git commit -v --amend'
+alias gcn!='git commit -v --no-edit --amend'
+alias gca='git commit -v -a'
+alias gca!='git commit -v -a --amend'
+alias gcan!='git commit -v -a --no-edit --amend'
+alias gcans!='git commit -v -a -s --no-edit --amend'
+alias gcam='git commit -a -m'
+alias gcsm='git commit -s -m'
+alias gcmsg='git commit -m'
+alias gcs='git commit -S'
+
+alias gch='git checkout'
+alias gchb='git checkout -b'
+alias gchm='git checkout master'
+alias gchd='git checkout develop'
+
+alias gconfig='git config --list'
+alias gcl='git clone --recursive'
+alias gclean='git clean -fd'
+
+alias gcount='git shortlog -sn'
+
+alias gd='git diff'
+alias gdca='git diff --cached'
+alias gdcw='git diff --cached --word-diff'
+alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
+alias gdt='git diff-tree --no-commit-id --name-only -r'
+alias gdw='git diff --word-diff'
+
+alias gf='git fetch'
+alias gfa='git fetch --all --prune'
+alias gfo='git fetch origin'
+
+alias gg='git gui citool'
+alias gga='git gui citool --amend'
+
+alias ggpur='ggu'
+alias ghh='git help'
+
+# alias gignore='git update-index --assume-unchanged'
+alias gignored='git ls-files -v | grep "^[[:lower:]]"'
+# alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
+
+alias gk='\gitk --all --branches'
+alias gke='\gitk --all $(git log -g --pretty=%h)'
+
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glo='git log --oneline --decorate'
+alias glol="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glola="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+alias glp="_git_log_prettily"
+# alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
+
+alias gm='git merge'
+alias gmom='git merge origin/master'
+alias gmt='git mergetool --no-prompt'
+alias gmtvim='git mergetool --no-prompt --tool=vimdiff'
+alias gmum='git merge upstream/master'
+alias gma='git merge --abort'
+
+alias gpl='git pull'
+alias gplb='git pull origin $(git_current_branch)' ###
+alias gplr='git pull --rebase'
+alias gplrv='git pull --rebase -v'
+alias gplum='git pull upstream master'
+
+alias gp='git push'
+alias gpd='git push --dry-run'
+alias gpoat='git push origin --all && git push origin --tags'
+alias gpu='git push upstream'
+alias gpo='git push origin'
+alias gpv='git push -v'
+alias gpob='git push origin $(git_current_branch)'
+alias gpsup='git push --set-upstream origin $(git_current_branch)' ###
+
+alias grb='git rebase'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grbi='git rebase -i'
+alias grbm='git rebase master'
+alias grbs='git rebase --skip'
+
+alias grm='git remote'
+alias grma='git remote add'
+alias grmr='git remote rename'
+alias grmrm='git remote remove'
+alias grmset='git remote set-url'
+alias grmu='git remote update'
+alias grmv='git remote -v'
+
+alias grs='git reset'
+alias grsh='git reset HEAD'
+alias grshh='git reset HEAD --hard'
+alias grsu='git reset --'
+alias gpristine='git reset --hard && git clean -dfx'
+
+alias gs='git status'
+alias gss='git status -s'
+alias gssb='git status -sb'
+
+alias gsts='git stash save'
+alias gsta='git stash apply'
+alias gstc='git stash clear'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash show --text'
+
+# alias gsi='git submodule init'
+# alias gsu='git submodule update'
+# alias gts='git tag -s'
+# alias gtv='git tag | sort -V'
+# alias gunignore='git update-index --no-assume-unchanged'
+# alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+
+alias gwip='git add -A; git rm `git ls-files --deleted` 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
