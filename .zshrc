@@ -106,11 +106,11 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 unsetopt nomatch
 
-# add my aliases file
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
+# add my alias files
+if [ -d ~/.aliases ]; then
+    source ~/.aliases/index
 else
-    print "404: '~/.aliases' file not found."
+    print "404: '~/.aliases' dir not found."
 fi
 
 # my ip address
