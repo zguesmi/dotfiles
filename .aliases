@@ -1,78 +1,88 @@
 #!/bin/sh
 
+alias plz=sudo
+
 ##################################
 #            docker              #
 ##################################
 
 # compose
-build
-bundle
-config
-create
-down
-events
-exec
-help
-kill
-logs
-pause
-port
-ps
-pull
-push
-restart
-rm
-run
-scale
-start
-stop
-top
-unpause
-up
-alias dc="docker-compose"
-alias dcd="docker-compose down"
-alias dcu="docker-compose up"
+alias dk='docker-compose'
+alias dkb='docker-compose build'
+alias dkbundle='docker-compose bundle'
+alias dkconfig='docker-compose config'
+alias dkc='docker-compose create'
+alias dkd='docker-compose down'
+alias dkevents='docker-compose events'
+alias dke='docker-compose exec'
+alias dkh='docker-compose help'
+alias dkk='docker-compose kill'
+alias dklogs='docker-compose logs'
+alias dkpause='docker-compose pause'
+alias dkport='docker-compose port'
+alias dkps='docker-compose ps'
+alias dkpull='docker-compose pull'
+alias dkpush='docker-compose push'
+alias dkrestart='docker-compose restart'
+alias dkrm='docker-compose rm'
+alias dkrun='docker-compose run'
+alias dkscale='docker-compose scale'
+alias dkstart='docker-compose start'
+alias dkstop='docker-compose stop'
+alias dktop='docker-compose top'
+alias dkunpause='docker-compose unpause'
+alias dkup='docker-compose up'
 
 # container
 alias dc='docker container'
 alias dca='docker container attach'
-alias dcc='docker container commit'
-alias dcc='docker container cp'
+alias dccommit='docker container commit'
+alias dccp='docker container cp'
 alias dcc='docker container create'
 alias dcd='docker container diff'
 alias dce='docker container exec'
-alias dce='docker container export'
+alias dcexport='docker container export'
 alias dci='docker container inspect'
+alias dciip='docker container inspect --format "{{ .NetworkSettings.IPAddress }}" '
 alias dck='docker container kill'
-alias dcl='docker container logs'
-alias dcl='docker container ls'
-alias dcp='docker container pause'
-alias dcp='docker container port'
-alias dcp='docker container prune'
-alias dcr='docker container rename'
-alias dcr='docker container restart'
-alias dcr='docker container rm'
-alias dcr='docker container run'
-alias dcs='docker container start'
-alias dcs='docker container stats'
-alias dcs='docker container stop'
-alias dct='docker container top'
-alias dcu='docker container unpause'
-alias dcu='docker container update'
+alias dclogs='docker container logs'
+alias dcls='docker container ls'
+alias dclsa='docker container ls -a'
+alias dclsaq='docker container ls -a -q'
+alias dclsl='docker container ls -l'
+alias dclslq='docker container ls -l -q'
+alias dcpause='docker container pause'
+alias dcport='docker container port'
+alias dcprune='docker container prune'
+alias dcrename='docker container rename'
+alias dcrestart='docker container restart'
+alias dcrm='docker container rm'
+      dcrma() { docker container rm `docker container ls -a -q` }
+      dcrmlast() { docker container rm `docker container ls -l -q` }
+alias dcrun='docker container run'
+alias dcrunit='docker container run -i -t'
+alias dcrund='docker container run -d'
+alias dcstart='docker container start'
+alias dcstats='docker container stats'
+alias dcstop='docker container stop'
+alias dctop='docker container top'
+alias dcunpause='docker container unpause'
+alias dcupdate='docker container update'
 alias dcw='docker container wait'
 
 # image
 alias di='docker image'
 alias dib='docker image build'
 alias dih='docker image history'
-alias dii='docker image import'
+alias diimport='docker image import'
 alias dii='docker image inspect'
-alias dil='docker image load'
-alias dil='docker image ls'
-alias dip='docker image prune'
-alias dip='docker image pull'
-alias dip='docker image push'
-alias dir='docker image rm'
+alias diisha='docker image inspect --format "{{  }}" ' ### sha
+alias diload='docker image load'
+alias dils='docker image ls'
+alias diprune='docker image prune'
+alias dipull='docker image pull'
+alias dipush='docker image push'
+alias dirm='docker image rm'
 alias dis='docker image save'
 alias dit='docker image tag'
 
@@ -84,23 +94,23 @@ alias dmi='docker manifest inspect'
 alias dmp='docker manifest push'
 
 # network
-alias dn='docker network'
-alias dnc='docker network connect'
-alias dnc='docker network create'
-alias dnd='docker network disconnect'
-alias dni='docker network inspect'
-alias dnl='docker network ls'
-alias dnp='docker network prune'
-alias dnr='docker network rm'
+alias dnet='docker network'
+alias dnetconnect='docker network connect'
+alias dnetc='docker network create'
+alias dnetd='docker network disconnect'
+alias dneti='docker network inspect'
+alias dnetls='docker network ls'
+alias dnetprune='docker network prune'
+alias dnetrm='docker network rm'
 
 # node
 alias dn='docker node'
 alias dnd='docker node demote'
 alias dni='docker node inspect'
-alias dnl='docker node ls'
+alias dnls='docker node ls'
 alias dnp='docker node promote'
-alias dnp='docker node ps'
-alias dnr='docker node rm'
+alias dnps='docker node ps'
+alias dnrm='docker node rm'
 alias dnu='docker node update'
 
 # plugin
@@ -109,55 +119,56 @@ alias dpc='docker plugin create'
 alias dpd='docker plugin disable'
 alias dpe='docker plugin enable'
 alias dpi='docker plugin inspect'
-alias dpi='docker plugin install'
-alias dpl='docker plugin ls'
-alias dpr='docker plugin rm'
+alias dpinstall='docker plugin install'
+alias dpls='docker plugin ls'
+alias dprm='docker plugin rm'
 alias dps='docker plugin set'
 alias dpu='docker plugin upgrade'
 
 # secret
-alias ds='docker secret'
-alias dsc='docker secret create'
-alias dsi='docker secret inspect'
-alias dsl='docker secret ls'
-alias dsr='docker secret rm'
+alias dsec='docker secret'
+alias dsecc='docker secret create'
+alias dseci='docker secret inspect'
+alias dsecls='docker secret ls'
+alias dsecrm='docker secret rm'
 
 # service
 alias ds='docker service'
 alias dsc='docker service create'
 alias dsi='docker service inspect'
-alias dsl='docker service logs'
-alias dsl='docker service ls'
-alias dsp='docker service ps'
-alias dsr='docker service rollback'
-alias dsr='docker service rm'
+alias dsiip='docker service inspect --format "{{ .NetworkSettings.IPAddress }}" '
+alias dslogs='docker service logs'
+alias dsls='docker service ls'
+alias dsps='docker service ps'
+alias dsrollback='docker service rollback'
+alias dsrm='docker service rm'
 alias dss='docker service scale'
 alias dsu='docker service update'
 
 # stack
-alias ds='docker stack'
-alias dsd='docker stack deploy'
-alias dsp='docker stack ps'
-alias dsr='docker stack rm'
-alias dss='docker stack services'
+alias dsk='docker stack'
+alias dskd='docker stack deploy'
+alias dskps='docker stack ps'
+alias dskrm='docker stack rm'
+alias dsks='docker stack services'
 
 # swarm
-alias ds='docker swarm'
-alias dsc='docker swarm ca'
-alias dsi='docker swarm init'
-alias dsj='docker swarm join-token'
-alias dsj='docker swarm join'
-alias dsl='docker swarm leave'
-alias dsu='docker swarm unlock-key'
-alias dsu='docker swarm unlock'
-alias dsu='docker swarm update'
+alias dsw='docker swarm'
+alias dswca='docker swarm ca'
+alias dswi='docker swarm init'
+alias dswjt='docker swarm join-token'
+alias dswj='docker swarm join'
+alias dswl='docker swarm leave'
+alias dswuk='docker swarm unlock-key'
+alias dswunlock='docker swarm unlock'
+alias dswu='docker swarm update'
 
 # system
-alias ds='docker system'
-alias dsd='docker system df'
-alias dse='docker system events'
-alias dsi='docker system info'
-alias dsp='docker system prune'
+alias dsy='docker system'
+alias dsyd='docker system df'
+alias dsye='docker system events'
+alias dsyi='docker system info'
+alias dsyprune='docker system prune'
 
 # trust
 alias dt='docker trust'
@@ -166,43 +177,24 @@ alias dtk='docker trust key'
 alias dtkg='docker trust key generate'
 alias dtkl='docker trust key load'
 alias dtr='docker trust revoke'
-alias dts='docker trust sign'
+alias dtsign='docker trust sign'
 alias dts='docker trust signer'
 alias dtsa='docker trust signer add'
-alias dtsr='docker trust signer remove'
+alias dtsrm='docker trust signer remove'
 
 # volume
 alias dvc='docker volume create'
 alias dvi='docker volume inspect'
-alias dvl='docker volume ls'
-alias dvp='docker volume prune'
-alias dvr='docker volume rm'
+alias dvls='docker volume ls'
+alias dvprune='docker volume prune'
+alias dvrm='docker volume rm'
 
 # various
-alias di='docker inspect'
-alias dl='docker logs'
-alias ds='docker search'
-## containers
-alias dr="docker run"
-alias drit="docker run -i -t"
-alias drd="docker run -d"
-alias dstr="docker start"
-alias dstrai="docker start -ai"
-alias dps="docker ps"
-alias dpsa="docker ps -a"
-alias dpsaq="docker ps -a -q"
-alias dpsl="docker ps -l -q"    # latest container ID
-alias dstp="docker stop"
-alias dk="docker kill"
-alias drm="docker rm"
-drma() { docker rm $(docker ps -a -q) }
-alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-alias dex="docker exec -i -t"
-db() { docker build -t $1 . }
+alias dinspect='docker inspect'
+alias dlogs='docker logs'
+alias dsearch='docker search'
+alias dinspect='docker inspect --format "{{ }}" ' ### $1
 
-
-
-alias plz=sudo
 
 ##################################
 #          directories           #
@@ -214,12 +206,10 @@ setopt pushd_ignore_dups
 setopt pushdminus
 
 alias d='dirs -v | head -10'
-
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g .....='../../../..'
-alias -g ......='../../../../..'
-
+alias ...='../..'
+alias ....='../../..'
+alias .....='../../../..'
+alias ......='../../../../..'
 alias -- -='cd -'
 alias 1='cd -'
 alias 2='cd -2'
@@ -232,7 +222,7 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 # List directory contents
-alias lsa='ls -lah'
+# alias lsa='ls -lah'
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
@@ -240,8 +230,6 @@ alias la='ls -lAh'
 # Push and pop directories on directory stack
 alias pu='pushd'
 alias po='popd'
-
-
 
 
 ##################################
