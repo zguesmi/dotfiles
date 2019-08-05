@@ -1,0 +1,400 @@
+alias plz=sudo
+
+# -------------------------------------------------- #
+#                 directories                        #
+# -------------------------------------------------- #
+
+# Changing/making/removing directory
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
+alias d='dirs -v | head -10'
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
+alias -- -='cd -'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+
+# List directory contents
+alias lsa='ls -lah'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -lAh'
+
+# Push and pop directories on directory stack
+alias pu='pushd'
+alias po='popd'
+
+
+# -------------------------------------------------- #
+# make some commands (potentially) less destructive  #
+# -------------------------------------------------- #
+
+alias rm='rm -i'
+
+
+# -------------------------------------------------- #
+#                 docker                             #
+# -------------------------------------------------- #
+
+## images
+alias di="docker images"
+alias drmi="docker rmi"
+alias dp="docker pull"
+
+
+## Volumes
+alias dv="docker volume ls"
+alias dvrm="docker volume rm"
+dvrma() { docker volume rm $(docker volume ls -q) }
+
+## containers
+alias dr="docker run"
+alias drit="docker run -i -t"
+alias drd="docker run -d"
+alias dstr="docker start"
+alias dstrai="docker start -ai"
+
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias dpsaq="docker ps -a -q"
+alias dpsl="docker ps -l -q"    # latest container ID
+
+alias dstp="docker stop"
+alias dk="docker kill"
+
+alias drm="docker rm"
+drma() { docker rm $(docker ps -a -q) }
+
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias dex="docker exec -i -t"
+
+db() { docker build -t $1 . }
+
+
+# -------------------------------------------------- #
+#                  docker-compose                    #
+# -------------------------------------------------- #
+
+alias dc="docker-compose"
+alias dcd="docker-compose down"
+alias dcu="docker-compose up"
+
+
+# -------------------------------------------------- #
+#                   cd to projects                   #
+# -------------------------------------------------- #
+
+alias xw="cd ~/Projects/iexec/xtremweb-hep"
+
+
+# -------------------------------------------------- #
+#                      git                           #
+# -------------------------------------------------- #
+
+# TODO
+gcfile() {
+    git add $1
+    git commit -m "$2"
+}
+
+# -------------------------------------------------- #
+#                     functions                      #
+# -------------------------------------------------- #
+
+# my ip address
+myip() {
+    ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
+    ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+    ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+    ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+    ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+}
+
+ostype() {
+    uname | tr '[:upper:]' '[:lower:]'
+}
+
+# clipcp - Copy data to clipboard
+#
+# Usage:
+#  <command> | clipcp    - copies stdin to clipboard
+#  clipcp <file>         - copies a file's contents to clipboard
+
+clipcp() {
+
+    OSTYPE=$(ostype)
+
+    emulate -L zsh
+    local file=$1
+    if [[ $OSTYPE == darwin* ]]; then
+        if [[ -z $file ]]; then
+            pbcopy
+        else
+            cat $file | pbcopy
+        fi
+    elif [[ $OSTYPE == cygwin* ]]; then
+        if [[ -z $file ]]; then
+            cat > /dev/clipboard
+        else
+            cat $file > /dev/clipboard
+        fi
+    else
+        if (( $+commands[xclip] )); then
+            if [[ -z $file ]]; then
+                xclip -in -selection clipboard
+            else
+                xclip -in -selection clipboard $file
+            fi
+        elif (( $+commands[xsel] )); then
+            if [[ -z $file ]]; then
+                xsel --clipboard --input
+            else
+                cat "$file" | xsel --clipboard --input
+            fi
+        else
+            print "clipboard copying/pasting: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
+            return 1
+        fi
+    fi
+}
+
+# clipps - "Paste" data from clipboard to stdout
+#
+# Usage:
+#   clipps   - writes clipboard's contents to stdout
+#   clipps | <command>    - pastes contents and pipes it to another process
+#   clipps > <file>      - paste contents to a file
+
+clipps() {
+
+    OSTYPE=$(ostype)
+
+    emulate -L zsh
+    if [[ $OSTYPE == darwin* ]]; then
+        pbpaste
+    elif [[ $OSTYPE == cygwin* ]]; then
+        cat /dev/clipboard
+    else
+        if (( $+commands[xclip] )); then
+            xclip -out -selection clipboard
+        elif (( $+commands[xsel] )); then
+            xsel --clipboard --output
+        else
+            print "clipboard copying/pasting: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
+            return 1
+        fi
+    fi
+}
+
+dsummary() {
+    /Users/zied/Projects/env-setup/setup/docker/summary.sh
+}
+
+#!/bin/sh
+
+##################################
+#            docker              #
+##################################
+
+# compose
+alias dk="docker-compose"
+alias dkb="docker-compose build"
+alias dkbundle="docker-compose bundle"
+alias dkconfig="docker-compose config"
+alias dkc="docker-compose create"
+alias dkd="docker-compose down"
+alias dkevents="docker-compose events"
+alias dke="docker-compose exec"
+alias dkh="docker-compose help"
+alias dkk="docker-compose kill"
+alias dklogs="docker-compose logs"
+alias dkpause="docker-compose pause"
+alias dkport="docker-compose port"
+alias dkps="docker-compose ps"
+alias dkpull="docker-compose pull"
+alias dkpush="docker-compose push"
+alias dkrestart="docker-compose restart"
+alias dkrm="docker-compose rm"
+alias dkrun="docker-compose run"
+alias dkscale="docker-compose scale"
+alias dkstart="docker-compose start"
+alias dkstop="docker-compose stop"
+alias dktop="docker-compose top"
+alias dkunpause="docker-compose unpause"
+alias dkup="docker-compose up"
+
+# container
+alias dc="docker container"
+alias dca="docker container attach"
+alias dccommit="docker container commit"
+alias dccp="docker container cp"
+alias dcc="docker container create"
+alias dcd="docker container diff"
+alias dce="docker container exec"
+alias dcexport="docker container export"
+alias dci="docker container inspect"
+alias dciip="docker container inspect --format '{{ .NetworkSettings.IPAddress }}' "
+alias dck="docker container kill"
+alias dclogs="docker container logs"
+alias dcls="docker container ls"
+alias dclsa="docker container ls -a"
+alias dclsaq="docker container ls -a -q"
+alias dclsl="docker container ls -l"
+alias dclslq="docker container ls -l -q"
+alias dcpause="docker container pause"
+alias dcport="docker container port"
+alias dcprune="docker container prune"
+alias dcrename="docker container rename"
+alias dcrestart="docker container restart"
+alias dcrm="docker container rm"
+      dcrma() { docker container rm `docker container ls -a -q` }
+      dcrmlast() { docker container rm `docker container ls -l -q` }
+alias dcrun="docker container run"
+alias dcrunit="docker container run -i -t"
+alias dcrund="docker container run -d"
+alias dcstart="docker container start"
+alias dcstats="docker container stats"
+alias dcstop="docker container stop"
+alias dctop="docker container top"
+alias dcunpause="docker container unpause"
+alias dcupdate="docker container update"
+alias dcw="docker container wait"
+
+# image
+alias di="docker image"
+alias dib="docker image build"
+alias dih="docker image history"
+alias diimport="docker image import"
+alias dii="docker image inspect"
+alias diisha="docker image inspect --format '{{  }}' " ### sha
+alias diload="docker image load"
+alias dils="docker image ls"
+alias diprune="docker image prune"
+alias dipull="docker image pull"
+alias dipush="docker image push"
+alias dirm="docker image rm"
+alias dis="docker image save"
+alias dit="docker image tag"
+
+# manifest
+alias dm="docker manifest"
+alias dma="docker manifest annotate"
+alias dmc="docker manifest create"
+alias dmi="docker manifest inspect"
+alias dmp="docker manifest push"
+
+# network
+alias dnet="docker network"
+alias dnetconnect="docker network connect"
+alias dnetc="docker network create"
+alias dnetd="docker network disconnect"
+alias dneti="docker network inspect"
+alias dnetls="docker network ls"
+alias dnetprune="docker network prune"
+alias dnetrm="docker network rm"
+
+# node
+alias dn="docker node"
+alias dnd="docker node demote"
+alias dni="docker node inspect"
+alias dnls="docker node ls"
+alias dnp="docker node promote"
+alias dnps="docker node ps"
+alias dnrm="docker node rm"
+alias dnu="docker node update"
+
+# plugin
+alias dp="docker plugin"
+alias dpc="docker plugin create"
+alias dpd="docker plugin disable"
+alias dpe="docker plugin enable"
+alias dpi="docker plugin inspect"
+alias dpinstall="docker plugin install"
+alias dpls="docker plugin ls"
+alias dprm="docker plugin rm"
+alias dps="docker plugin set"
+alias dpu="docker plugin upgrade"
+
+# secret
+alias dsec="docker secret"
+alias dsecc="docker secret create"
+alias dseci="docker secret inspect"
+alias dsecls="docker secret ls"
+alias dsecrm="docker secret rm"
+
+# service
+alias ds="docker service"
+alias dsc="docker service create"
+alias dsi="docker service inspect"
+alias dsiip="docker service inspect --format '{{ .NetworkSettings.IPAddress }}' "
+alias dslogs="docker service logs"
+alias dsls="docker service ls"
+alias dsps="docker service ps"
+alias dsrollback="docker service rollback"
+alias dsrm="docker service rm"
+alias dss="docker service scale"
+alias dsu="docker service update"
+
+# stack
+alias dsk="docker stack"
+alias dskd="docker stack deploy"
+alias dskps="docker stack ps"
+alias dskrm="docker stack rm"
+alias dsks="docker stack services"
+
+# swarm
+alias dsw="docker swarm"
+alias dswca="docker swarm ca"
+alias dswi="docker swarm init"
+alias dswjt="docker swarm join-token"
+alias dswj="docker swarm join"
+alias dswl="docker swarm leave"
+alias dswuk="docker swarm unlock-key"
+alias dswunlock="docker swarm unlock"
+alias dswu="docker swarm update"
+
+# system
+alias dsy="docker system"
+alias dsyd="docker system df"
+alias dsye="docker system events"
+alias dsyi="docker system info"
+alias dsyprune="docker system prune"
+
+# trust
+alias dt="docker trust"
+alias dti="docker trust inspect"
+alias dtk="docker trust key"
+alias dtkg="docker trust key generate"
+alias dtkl="docker trust key load"
+alias dtr="docker trust revoke"
+alias dtsign="docker trust sign"
+alias dts="docker trust signer"
+alias dtsa="docker trust signer add"
+alias dtsrm="docker trust signer remove"
+
+# volume
+alias dvc="docker volume create"
+alias dvi="docker volume inspect"
+alias dvls="docker volume ls"
+alias dvprune="docker volume prune"
+alias dvrm="docker volume rm"
+
+# various
+alias dins="docker inspect"
+alias dinsf="docker inspect --format '{{ }}' " ### $1
+alias dlogs="docker logs"
+alias dsearch="docker search"
+
