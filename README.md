@@ -2,10 +2,13 @@
 I keep track of all my .dotfiles (shell, aliases, themes, vim...) here.
 The `setup.sh` script automates all of the configuration I need whenever switching
 on a new machine. I'll just `git clone` it and pipe it to bash (bash is internet explorer
-of my terminal, it is only used to install *zsh*).
+of my terminal, it is only used to install **zsh**).
 
-## Install zsh & OhMyZsh
+## Install zsh & configure OhMyZsh
 
+Theme: powerline9k
+Fonts: font-awesome
+Plugins:
 ```
 plugins=(
   git
