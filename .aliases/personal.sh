@@ -62,6 +62,6 @@ alias dv="docker volume"
 # ------------------------------ #
 #             gradle             #
 # ------------------------------ #
-alias grdb="./gradlew clean build --refresh-dependencies"
-alias grdr="./gradlew bootRun"
-alias grdc="./gradlew clean"
+alias grdc="gradle clean"
+alias grdb="gradle clean build --refresh-dependencies"
+alias grdr="gradle bootRun"
