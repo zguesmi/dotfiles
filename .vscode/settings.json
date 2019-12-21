@@ -1,0 +1,67 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:\"/home/zied/.vscode/extensions/gabrielbb.vscode-lombok-0.9.9/server/lombok.jar\"",
+    "workbench.iconTheme": "vscode-icons",
+    "window.zoomLevel": 0,
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
+    "editor.wordWrapColumn": 120,
+    "files.watcherExclude": {
+        "**/build": true
+    },
+    "window.titleBarStyle": "custom",
+    "cSpell.userWords": [
+        "dataset",
+        "iexec"
+    ],
+    "python.jediEnabled": false,
+    "cSpell.enabledLanguageIds": [
+        "asciidoc",
+        "c",
+        "cpp",
+        "csharp",
+        "css",
+        "git-commit",
+        "go",
+        "handlebars",
+        "haskell",
+        "html",
+        "jade",
+        "java",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "latex",
+        "less",
+        "markdown",
+        "php",
+        "plaintext",
+        "pug",
+        "python",
+        "restructuredtext",
+        "rust",
+        "scala",
+        "scss",
+        "text",
+        "typescript",
+        "typescriptreact",
+        "yaml",
+        "yml"
+    ],
+    "files.associations": {
+        "*.yml": "yaml"
+    },
+    "[yaml]": {},
+    "editor.wordWrap": "on",
+    "java.referencesCodeLens.enabled": true,
+    "java.implementationsCodeLens.enabled": true,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "terminal.integrated.fontFamily": "Menlo for Powerline",
+    "terminal.integrated.scrollback": 10000
+}

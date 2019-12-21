@@ -1,51 +1,35 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-
     "version": "2.0.0",
-    "presentation": {
-        "reveal": "always",
-        "panel": "new"
-    },
     "tasks": [
         {
-            "label": "gradle clean build",
+            "label": "gradle clean",
             "type": "shell",
-            "command": "./gradlew",
-            "args": [
-                "clean",
-                "build",
-                "--refresh-dependencies"
-            ],
-            "group": {
+            "command": "./gradlew clean"
+        },
+        {
+            "label": "gradle build",
+            "type": "shell",
+            "command": "./gradlew clean build --refresh-dependencies",
+            "group":{
                 "kind": "build",
                 "isDefault": true
             }
         },
         {
-            "label": "gradle build",
+            "label": "gradle test",
             "type": "shell",
-            "command": "./gradlew",
-            "args": [
-                "build",
-                "--refresh-dependencies"
-            ]
-        },
-        {
-            "label": "gradle clean",
-            "type": "shell",
-            "command": "./gradlew",
-            "args": [
-                "clean"
-            ]
+            "command": "./gradlew test jacocoTestReport",
+            "group":{
+                "kind": "test",
+                "isDefault": true
+            }
         },
         {
             "label": "gradle run",
             "type": "shell",
-            "command": "./gradlew",
-            "args": [
-                "bootRun"
-            ]
+            "command": "./gradlew bootRun"
         }
     ]
 }
