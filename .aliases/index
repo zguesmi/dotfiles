@@ -1,6 +1,0 @@
-#!/bin/sh
-
-source ./docker
-source ./git
-source ./iexec
-source ./shell
