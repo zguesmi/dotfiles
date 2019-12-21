@@ -6,12 +6,12 @@
         {
             "label": "gradle clean",
             "type": "shell",
-            "command": "./gradlew clean"
+            "command": "gradle clean"
         },
         {
             "label": "gradle build",
             "type": "shell",
-            "command": "./gradlew clean build --refresh-dependencies",
+            "command": "gradle clean build --refresh-dependencies -Dtest.profile=skipDocker",
             "group":{
                 "kind": "build",
                 "isDefault": true
@@ -20,7 +20,7 @@
         {
             "label": "gradle test",
             "type": "shell",
-            "command": "./gradlew test jacocoTestReport",
+            "command": "gradle test jacocoTestReport",
             "group":{
                 "kind": "test",
                 "isDefault": true
@@ -29,7 +29,7 @@
         {
             "label": "gradle run",
             "type": "shell",
-            "command": "./gradlew bootRun"
+            "command": "gradle bootRun"
         }
     ]
 }
