@@ -16,6 +16,7 @@ alias tohex=""
 alias sshpub="cat ~/.ssh/id_rsa.pub | clipcp"
 # alias dud="du -d 1 -h"
 # alias duf="du -sh"
+alias https='http --default-scheme=https'
 
 
 # ------------------------------ #
