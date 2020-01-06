@@ -4,9 +4,12 @@ export ZSH="/home/zied/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-# shorten the length fo the prompt
+# Shorten the length fo the prompt
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+# Disable right prompt
+POWERLEVEL9K_DISABLE_RPROMPT=true
 unsetopt nomatch
+
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
