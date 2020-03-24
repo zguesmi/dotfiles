@@ -10,7 +10,6 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_DISABLE_RPROMPT=true
 unsetopt nomatch
 
-
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
 
@@ -20,17 +19,17 @@ unsetopt nomatch
 plugins=(
     colored-man-pages
     # command-not-found
-    common-aliases
+    # common-aliases
     docker
     docker-compose
     git
-    git-extras
-    history
+    # git-extras
+    # history
     nvm
-    ruby
-    sdk
+    # ruby
+    sdk # java
     # virtualenv
-    vscode
+    # vscode
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
