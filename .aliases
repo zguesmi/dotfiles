@@ -9,7 +9,7 @@ alias plz="sudo"
 # ------------------------------ #
 #              misc              #
 # ------------------------------ #
-alias upd= "sudo apt update"
+alias upd="sudo apt update"
 alias upg="sudo apt -y upgrade"
 alias updg="sudo apt update && sudo apt -y upgrade"
 alias zshrc="vim ~/.zshrc"
