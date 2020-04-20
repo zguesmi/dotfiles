@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+# install deps
+PACKAGES=$(cat .packages | grep -ve '^#')
+printf "> Installing the following packages:\n\n"
+printf "#################\n"
+printf "$PACKAGES\n"
+printf "#################\n\n"
+sudo apt-get update > /dev/null
+sudo apt-get install -y $PACKAGES > /dev/null
+
+# make zsh defautl browser
+printf "> Installed zsh version: $(zsh --version)\n"
+sudo chsh -s $(which zsh)
+printf "> zsh is now the default shell for user $USER\n"
+
+# alias xapt="apt"
+
+
+# Now please install brave
+# curl then dpkg -i
