@@ -20,7 +20,14 @@ alias cpssh="cat ~/.ssh/id_rsa.pub | clipcp"
 # alias dud="du -d 1 -h"
 # alias duf="du -sh"
 alias https='http --default-scheme=https'
-
+alias brave='brave-browser'
+alias ipp='curl ipinfo.io/ip'
+alias ipw='ip addr show dev wlp2s0'
+# alias ipe='ip addr show dev eth'
+alias zshconf='vim ~/.zshrc'
+alias vimconf='vim ~/.vimrc'
+alias vscconf='vim ~/.config/Code'
+# ddccontrol
 
 # ------------------------------ #
 #              vpn               #
