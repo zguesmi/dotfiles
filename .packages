@@ -3,6 +3,7 @@ terminator
 zsh
 
 # tools:
+curl
 git
 htop
 httpie
@@ -11,7 +12,6 @@ nmap
 stow
 tree
 vim
-#vtop
 
 # development
 # ansible
@@ -32,3 +32,6 @@ vim
 
 # web
 # brave-browser
+
+# npm
+#vtop

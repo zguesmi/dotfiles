@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-# install deps
+# install deb packages
 PACKAGES=$(cat .packages | grep -ve '^#')
-printf "> Installing the following packages:\n\n"
+printf "> Installing the following packages...:\n\n"
 printf "#################\n"
 printf "$PACKAGES\n"
 printf "#################\n\n"
@@ -12,8 +12,13 @@ sudo apt-get install -y $PACKAGES > /dev/null
 
 # make zsh defautl browser
 printf "> Installed zsh version: $(zsh --version)\n"
-chsh -s $(which zsh)
-printf "> zsh is now the default shell for user: $USER\n"
+# chsh -s $(which zsh)
+# printf "> zsh is now the default shell for user: $USER\n"
+printf "Installing ohmyzsh..."
+$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# powerline fonts
+
 
 # alias xapt="apt"
 
