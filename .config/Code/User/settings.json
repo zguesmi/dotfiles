@@ -1,0 +1,53 @@
+{
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/home/zied/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.factorypath": true,
+        "**/.gradle": true,
+        "**/.project": true,
+        "**/.settings": true,
+        // "**/bin": true,
+        // "**/build": true
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.fontFamily": "Menlo for Powerline",
+    "terminal.integrated.scrollback": 10000,
+    "window.menuBarVisibility": "toggle",
+    "python.jediEnabled": false,
+    "window.zoomLevel": 0,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 120,
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "cSpell.userWords": [
+        "DATASET",
+        "FSPF",
+        "IEXEC",
+        "MRENCLAVE",
+        "Workerpool",
+        "autowired",
+        "ethereum"
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[json]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "java.semanticHighlighting.enabled": true,
+    "files.associations": {
+        "**/roles/**/*.yml": "ansible",
+        "**/ansible/**/*.yml": "ansible",
+        "**/*.yml": "yaml"
+    },
+    "ansible.validation": true
+}

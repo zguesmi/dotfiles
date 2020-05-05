@@ -4,30 +4,31 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "gradle clean",
+            "label": "[Default] gradle clean",
             "type": "shell",
             "command": "gradle clean"
         },
         {
-            "label": "gradle build",
+            "label": "[Default] gradle clean build --refresh-dependencies",
             "type": "shell",
             "command": "gradle clean build --refresh-dependencies -Dtest.profile=skipDocker",
-            "group":{
+            "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": []
         },
         {
-            "label": "gradle test",
+            "label": "[Default] gradle test",
             "type": "shell",
-            "command": "gradle test jacocoTestReport",
-            "group":{
+            "command": "gradle test jacocoTestReport -Dtest.profile=skipDocker",
+            "group": {
                 "kind": "test",
                 "isDefault": true
             }
         },
         {
-            "label": "gradle run",
+            "label": "[Default] gradle bootRun",
             "type": "shell",
             "command": "gradle bootRun"
         }
