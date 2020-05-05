@@ -26,9 +26,7 @@ plugins=(
     # git-extras
     # history
     nvm
-    # ruby
     sdk # java
-    # virtualenv
     # vscode
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -36,7 +34,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/dotfiles/.aliases ] && source ~/dotfiles/.aliases
 
 IEXECDEV=$HOME/iexecdev/iexec-deploy/core-dev/dot.bash_aliases
