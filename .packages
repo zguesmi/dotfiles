@@ -1,6 +1,7 @@
 # terminal
 terminator
 zsh
+powerline-fonts
 
 # tools:
 curl
