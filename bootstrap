@@ -36,6 +36,11 @@ printf "${GREEN}> Installed zsh version: $(zsh --version)${RESET}\n"
 printf "${GREEN}> Configuring zsh as the default shell for user: $USER${RESET}\n"
 chsh -s $(which zsh)
 
+printf "${GREEN}> Installing custom oh-my-zsh plugins and themes...{RESET}\n"
+git clone https://github.com/zsh-users/zsh-autosuggestions zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/Powerlevel9k/powerlevel9k.git zsh/.oh-my-zsh/custom/themes/powerlevel9k
+
 snap install codium --classic
 stow vscodium zsh
 
