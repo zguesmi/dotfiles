@@ -45,7 +45,6 @@ git clone https://github.com/Powerlevel9k/powerlevel9k.git zsh/.oh-my-zsh/custom
 snap install codium --classic
 stow vscodium zsh
 
-# powerline fonts
 # Now please install brave
 # curl then dpkg -i
 
