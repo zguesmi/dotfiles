@@ -1,28 +1,28 @@
 #!/bin/bash
 
 
-# setup_color() {
-# 	# Only use colors if connected to a terminal
-# 	if [ -t 1 ]; then
-# 		RED=$(printf '\033[31m')
-# 		GREEN=$(printf '\033[32m')
-# 		YELLOW=$(printf '\033[33m')
-# 		BLUE=$(printf '\033[34m')
-# 		BOLD=$(printf '\033[1m')
-# 		RESET=$(printf '\033[m')
-# 	else
-# 		RED=""
-# 		GREEN=""
-# 		YELLOW=""
-# 		BLUE=""
-# 		BOLD=""
-# 		RESET=""
-# 	fi
-# }
+setup_color() {
+	# Only use colors if connected to a terminal
+	if [ -t 1 ]; then
+		RED=$(printf '\033[31m')
+		GREEN=$(printf '\033[32m')
+		YELLOW=$(printf '\033[33m')
+		BLUE=$(printf '\033[34m')
+		BOLD=$(printf '\033[1m')
+		RESET=$(printf '\033[m')
+	else
+		RED=""
+		GREEN=""
+		YELLOW=""
+		BLUE=""
+		BOLD=""
+		RESET=""
+	fi
+}
 
 # install deb packages
 PACKAGES=$(cat .packages | grep -ve '^#')
-printf "> Installing the following packages...:\n\n"
+printf "${GREEN}> Installing the following packages:${RESET}\n\n"
 printf "#################\n"
 printf "$PACKAGES\n"
 printf "#################\n\n"
@@ -30,25 +30,17 @@ sudo apt-get update > /dev/null
 sudo apt-get install -y $PACKAGES > /dev/null
 
 # make zsh defautl browser
-printf "> Installing zsh shell...\n"
+printf "${GREEN}> Installing zsh shell...${RESET}\n"
 sudo apt install zsh
-printf "> Installed zsh version: $(zsh --version)\n"
-printf "> Configuring zsh as the default shell for user: $USER\n"
+printf "${GREEN}> Installed zsh version: $(zsh --version)${RESET}\n"
+printf "${GREEN}> Configuring zsh as the default shell for user: $USER${RESET}\n"
 chsh -s $(which zsh)
 
-
-stow
-
-
-
-# printf "Installing ohmyzsh..."
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+snap install codium
+stow vscodium zsh
 
 # powerline fonts
-
-
-# alias xapt="apt"
-
-
 # Now please install brave
 # curl then dpkg -i
+
+# alias xapt="apt"
