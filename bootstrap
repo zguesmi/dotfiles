@@ -36,7 +36,7 @@ printf "${GREEN}> Installed zsh version: $(zsh --version)${RESET}\n"
 printf "${GREEN}> Configuring zsh as the default shell for user: $USER${RESET}\n"
 chsh -s $(which zsh)
 
-snap install codium
+snap install codium --classic
 stow vscodium zsh
 
 # powerline fonts
