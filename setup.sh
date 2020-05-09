@@ -72,8 +72,9 @@ sdk install gradle 5.5
 #  Desktop apps #
 #################
 printf "> Installing desktop apps:\n"
-sudo snap install gitkraken postman
 sudo snap install codium --classic
+sudo snap install gitkraken
+sudo snap install postman
 sudo snap install slack --classic
 # Brave
 add_deb_repo "brave-browser" \
