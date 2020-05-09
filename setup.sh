@@ -1,27 +1,19 @@
 #!/bin/bash
 
 
-# function add_gpg_key() {
-#     sudo curl -s $1 | sudo apt-key --keyring /etc/apt/trusted.gpg.d/$2 add -
-# }
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
 
-# function add_source_repo() {
-#     sudo echo $1 | sudo tee /etc/apt/sources.list.d/$2
-# }
-
-function add_apt_repo() {
+function add_deb_repo() {
     local NAME=$1
     local REPO_URL=$2
     local GPG_URL=$3
 
-    echo $NAME
     if [ ! -z $GPG_URL ]; then
-        # sudo curl -fsSL $GPG_URL | sudo apt-key --keyring /etc/apt/trusted.gpg.d/$NAME.gpg add -
-        echo "gpg set: $GPG_URL"
+        sudo curl -fsSL $GPG_URL | sudo apt-key --keyring /etc/apt/trusted.gpg.d/$NAME.gpg add -
     fi
 
-    # sudo add-apt-repository --yes --update $REPO_URL
-    echo "url: $REPO_URL"
+    echo $REPO_URL | sudo tee /etc/apt/sources.list.d/$NAME.list && sudo apt-get update -q
 }
 
 #################
@@ -29,7 +21,7 @@ function add_apt_repo() {
 #################
 PACKAGES="apt-transport-https ca-certificates curl git gnupg-agent htop httpie jq nmap neofetch "
 PACKAGES+="powerline software-properties-common sdkman stow terminator tree unzip vim wget zip zsh"
-printf "> Installing the OS packages:\n$PACKAGES\n"
+printf "> Installing those OS packages:\n$PACKAGES\n"
 sudo apt-get update -q && sudo apt-get install -q -y $PACKAGES
 
 #################
@@ -49,13 +41,9 @@ git clone -q https://github.com/romkatv/powerlevel10k.git				zsh/.oh-my-zsh/cust
 #################
 printf "> Installing dev tools\n"
 # Ansible
-add_apt_repo "ansible" "ppa:ansible/ansible" && sudo apt-get install ansible
+udo add-apt-repository --yes --update ppa:ansible/ansible && sudo apt-get install ansible
 # Docker
-# sudo snap install docker
-add_apt_repo "docker" \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
-        "https://download.docker.com/linux/ubuntu/gpg"
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo snap install docker
 COMPOSE_BIN="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"
 sudo curl -L $COMPOSE_BIN -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
 sudo usermod -aG docker user
@@ -74,13 +62,22 @@ printf "> Installing desktop apps:\n"
 sudo snap instal gitkraken postman
 sudo snap instal codium --classic
 sudo snap instal slack --classic
-install_from_source_repo "brave-browser" \
-        "https://brave-browser-apt-release.s3.brave.com/brave-core.asc" \
-        "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"
-install_from_source_repo "riot-desktop" \
-        "https://packages.riot.im/debian/riot-im-archive-keyring.gpg" \
-        "deb https://packages.riot.im/debian/ default main"
-add_apt_repo "shutter" "ppa:linuxuprising/shutter" && sudo apt-get install shutter
+# Brave
+add_deb_repo "brave-browser" \
+        "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+        "https://brave-browser-apt-release.s3.brave.com/brave-core.asc"
+# Riot
+add_deb_repo "riot-desktop" \
+        "deb https://packages.riot.im/debian/ default main" \
+        "https://packages.riot.im/debian/riot-im-archive-keyring.gpg"
+# Shutter
+sudo add-apt-repository --yes --update ppa:linuxuprising/shutter
+sudo apt-get install brave-browser riot-desktop shutter
+# Etcher
+sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
+add_deb_repo "balena-etcher" \
+        "deb https://deb.etcher.io stable etcher"
+sudo apt-get install -q -y balena-etcher-electron
 
 #################
 #   Dotfiles    #
