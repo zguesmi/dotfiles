@@ -20,7 +20,7 @@ function add_deb_repo() {
 #  OS packags   #
 #################
 PACKAGES="apt-transport-https ca-certificates curl git gnupg-agent htop httpie jq nmap neofetch "
-PACKAGES+="powerline software-properties-common sdkman stow terminator tree unzip vim wget zip zsh"
+PACKAGES+="powerline software-properties-common stow terminator tree unzip vim wget zip zsh"
 printf "> Installing those OS packages:\n$PACKAGES\n"
 sudo apt-get update -q && sudo apt-get install -q -y $PACKAGES
 
