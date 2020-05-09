@@ -1,8 +1,11 @@
 # dotfiles
-I keep track of my dotfiles here!
+I "git clone" and "setup.sh" to reproduce my config on new machines
 
 ## Start by installing git and cloning the repo
 ```
-sudo apt install git
-cd ~ && git clone https://github.com/zguesmi/dotfiles.git && cd dotfiles
-bash bootstrap
+cd ~
+sudo apt-get update && sudo apt-get install -y git && \
+    git clone https://github.com/zguesmi/dotfiles.git && \
+    cd dotfiles && \
+    bash setup.sh
+```
