@@ -47,7 +47,6 @@ git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git 	zsh/.oh-m
 git clone -q https://github.com/zsh-users/zsh-autosuggestions			zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone -q https://github.com/Powerlevel9k/powerlevel9k.git 			zsh/.oh-my-zsh/custom/themes/powerlevel9k
 git clone -q https://github.com/romkatv/powerlevel10k.git				zsh/.oh-my-zsh/custom/themes/powerlevel10k
-stow zsh && source ~/.zshrc
 
 #################
 #   Dev tools   #
@@ -98,4 +97,4 @@ apt_update_install_quiet brave-browser riot-desktop shutter balena-etcher-electr
 #################
 printf "> Populating dotfiles\n"
 stow fonts && sudo fc-cache -f
-stow vscodium git
+stow zsh vscodium git
