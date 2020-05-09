@@ -1,0 +1,21 @@
+[global_config]
+  inactive_color_offset = 0.5
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    cursor_shape = ibeam
+    scrollback_infinite = True
+    show_titlebar = False
+  [[Zied]]
+    cursor_color = "#aaaaaa"
+    scrollback_infinite = True
