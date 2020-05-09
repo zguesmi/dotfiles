@@ -16,13 +16,21 @@ function add_deb_repo() {
     echo $REPO_URL | sudo tee /etc/apt/sources.list.d/$NAME.list && sudo apt-get update -q
 }
 
+function apt_update_quiet() {
+    sudo apt-get update > /dev/null
+}
+
+function apt_install_quiet() {
+    sudo apt-get install -y $@ > /dev/null
+}
+
 #################
 #  OS packags   #
 #################
 PACKAGES="apt-transport-https ca-certificates curl git gnupg-agent htop httpie jq nmap neofetch "
 PACKAGES+="powerline software-properties-common stow terminator tree unzip vim wget zip zsh"
 printf "> Installing those OS packages:\n$PACKAGES\n"
-sudo apt-get update -q && sudo apt-get install -q -y $PACKAGES
+apt_update_quiet && apt_install_quiet $PACKAGES
 
 #################
 #   Terminal    #
@@ -41,7 +49,7 @@ git clone -q https://github.com/romkatv/powerlevel10k.git				zsh/.oh-my-zsh/cust
 #################
 printf "> Installing dev tools\n"
 # Ansible
-udo add-apt-repository --yes --update ppa:ansible/ansible && sudo apt-get install ansible
+sudo add-apt-repository --yes --update ppa:ansible/ansible && apt_install_quiet ansible
 # Docker
 sudo snap install docker
 COMPOSE_BIN="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"
@@ -72,12 +80,12 @@ add_deb_repo "riot-desktop" \
         "https://packages.riot.im/debian/riot-im-archive-keyring.gpg"
 # Shutter
 sudo add-apt-repository --yes --update ppa:linuxuprising/shutter
-sudo apt-get install brave-browser riot-desktop shutter
 # Etcher
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
 add_deb_repo "balena-etcher" \
         "deb https://deb.etcher.io stable etcher"
-sudo apt-get install -q -y balena-etcher-electron
+
+apt_install_quiet brave-browser riot-desktop shutter balena-etcher-electron
 
 #################
 #   Dotfiles    #
