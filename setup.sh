@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-PACKAGES="apt-transport-https ca-certificates curl git gnupg-agent htop"
-PACKAGES+="httpie jq nmap software-properties-common stow tree vim wget zsh"
+PACKAGES="apt-transport-https ca-certificates curl git gnupg-agent htop httpie jq nmap "
+PACKAGES+="powerline software-properties-common stow tree vim wget zsh"
 printf "> Installing the following packages:\n$PACKAGES\n"
 sudo apt-get update > /dev/null && sudo apt-get install -y $PACKAGES > /dev/null
 
@@ -17,7 +17,9 @@ git clone -q https://github.com/Powerlevel9k/powerlevel9k.git 			zsh/.oh-my-zsh/
 git clone -q https://github.com/romkatv/powerlevel10k.git				zsh/.oh-my-zsh/custom/themes/powerlevel10k
 
 # Desktop apps
+sudo apt install terminator
 sudo snap install codium docker gitkraken node postman slack --classic
+# ansible ethereum gradle java sdkman neofetch #vtop
 
 # Brave
 printf "> Installing Brave browser\n"
