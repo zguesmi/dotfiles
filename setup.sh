@@ -43,6 +43,7 @@ git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git 	zsh/.oh-m
 git clone -q https://github.com/zsh-users/zsh-autosuggestions			zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone -q https://github.com/Powerlevel9k/powerlevel9k.git 			zsh/.oh-my-zsh/custom/themes/powerlevel9k
 git clone -q https://github.com/romkatv/powerlevel10k.git				zsh/.oh-my-zsh/custom/themes/powerlevel10k
+stow zsh && source ~/.zshrc
 
 #################
 #   Dev tools   #
@@ -60,6 +61,7 @@ sudo snap install node --classic
 npm install -q -g vtop express-generator
 # Java
 curl -s "https://get.sdkman.io" | bash
+source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 sdk install java 11.0.7.hs-adpt
 sdk install gradle 5.5
 
@@ -67,9 +69,9 @@ sdk install gradle 5.5
 #  Desktop apps #
 #################
 printf "> Installing desktop apps:\n"
-sudo snap instal gitkraken postman
-sudo snap instal codium --classic
-sudo snap instal slack --classic
+sudo snap install gitkraken postman
+sudo snap install codium --classic
+sudo snap install slack --classic
 # Brave
 add_deb_repo "brave-browser" \
         "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
@@ -92,4 +94,4 @@ apt_install_quiet brave-browser riot-desktop shutter balena-etcher-electron
 #################
 printf "> Populating dotfiles\n"
 stow fonts && sudo fc-cache -fv
-stow vscodium zsh git
+stow vscodium git
