@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ohmyzsh
-export ZSH="${XDG_CACHE_HOME}/oh-my-zsh"
+export ZSH="${XDG_CONFIG_HOME}/oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
@@ -16,7 +16,7 @@ plugins=(
 )
 
 source ${ZSH}/oh-my-zsh.sh
-[[ ! -f "${XDG_CACHE_HOME}/p10k.zsh" ]] || source "${XDG_CACHE_HOME}/p10k.zsh"
+[[ ! -f "${XDG_CONFIG_HOME}/p10k.zsh" ]] || source "${XDG_CONFIG_HOME}/p10k.zsh"
 
 # sdkman
 export SDKMAN_DIR="${XDG_CONFIG_HOME}/.sdkman"

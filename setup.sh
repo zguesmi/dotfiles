@@ -13,7 +13,7 @@ function add_deb_repo() {
         sudo curl -fsSL $GPG_URL | sudo apt-key --keyring /etc/apt/trusted.gpg.d/$NAME.gpg add -
     fi
 
-    echo $REPO_URL | sudo tee /etc/apt/sources.list.d/$NAME.list && sudo apt-get update -q
+    echo $REPO_URL | sudo tee /etc/apt/sources.list.d/$NAME.list
 }
 
 function apt_update_quiet() {
@@ -22,6 +22,10 @@ function apt_update_quiet() {
 
 function apt_install_quiet() {
     sudo apt-get install -y $@ > /dev/null
+}
+
+function apt_update_install_quiet() {
+    apt_update_quiet && apt_install_quiet
 }
 
 #################
@@ -50,15 +54,15 @@ stow zsh && source ~/.zshrc
 #################
 printf "> Installing dev tools\n"
 # Ansible
-sudo add-apt-repository --yes --update ppa:ansible/ansible && apt_install_quiet ansible
+sudo add-apt-repository --yes ppa:ansible/ansible && apt_update_install_quiet ansible
 # Docker
 sudo snap install docker
 COMPOSE_BIN="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"
 sudo curl -L $COMPOSE_BIN -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
 sudo usermod -aG docker user
 # Nodejs
-sudo snap install node --classic
-npm install -q -g vtop express-generator
+# sudo snap install node --classic
+# npm install -q -g vtop express-generator
 # Java
 curl -s "https://get.sdkman.io" | bash
 source "${SDKMAN_DIR}/bin/sdkman-init.sh"
@@ -81,17 +85,17 @@ add_deb_repo "riot-desktop" \
         "deb https://packages.riot.im/debian/ default main" \
         "https://packages.riot.im/debian/riot-im-archive-keyring.gpg"
 # Shutter
-sudo add-apt-repository --yes --update ppa:linuxuprising/shutter
+sudo add-apt-repository --yes ppa:linuxuprising/shutter
 # Etcher
 sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
 add_deb_repo "balena-etcher" \
         "deb https://deb.etcher.io stable etcher"
 
-apt_install_quiet brave-browser riot-desktop shutter balena-etcher-electron
+apt_update_install_quiet brave-browser riot-desktop shutter balena-etcher-electron
 
 #################
 #   Dotfiles    #
 #################
 printf "> Populating dotfiles\n"
-stow fonts && sudo fc-cache -fv
+stow fonts && sudo fc-cache -f
 stow vscodium git
