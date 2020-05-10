@@ -3,6 +3,7 @@
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
+export ZSH="${XDG_CONFIG_HOME}/oh-my-zsh"
 GR="\033[1;32m" # green
 NC="\033[0m"    # no color
 
@@ -37,7 +38,7 @@ function apt_update_install_quiet() {
 #################
 #  OS packags   #
 #################
-PACKAGES="apt-transport-https ca-certificates curl git gnupg-agent htop httpie jq nmap neofetch "
+PACKAGES="apt-transport-https ca-certificates curl git gnupg-agent guake htop httpie jq nmap neofetch "
 PACKAGES+="powerline software-properties-common stow terminator tree unzip vim wget zip zsh"
 log "Installing those OS packages:"
 printf "${PACKAGES}\n"
@@ -50,10 +51,10 @@ log "Setting up terminal"
 log "Configuring zsh as the default shell for user: $USER"
 chsh -s $(which zsh)
 log "Installing oh-my-zsh addons"
-git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git 	zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone -q https://github.com/zsh-users/zsh-autosuggestions			zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone -q https://github.com/Powerlevel9k/powerlevel9k.git 			zsh/.oh-my-zsh/custom/themes/powerlevel9k
-git clone -q https://github.com/romkatv/powerlevel10k.git				zsh/.oh-my-zsh/custom/themes/powerlevel10k
+git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git 	${ZSH}/custom/plugins/zsh-syntax-highlighting
+git clone -q https://github.com/zsh-users/zsh-autosuggestions			${ZSH}/custom/plugins/zsh-autosuggestions
+git clone -q https://github.com/Powerlevel9k/powerlevel9k.git 			${ZSH}/custom/themes/powerlevel9k
+git clone -q https://github.com/romkatv/powerlevel10k.git				${ZSH}/custom/themes/powerlevel10k
 stow zsh
 
 #################
@@ -106,5 +107,5 @@ apt_update_install_quiet brave-browser riot-desktop shutter balena-etcher-electr
 #################
 log "Populating dotfiles"
 stow fonts && sudo fc-cache -f
-stow zsh vscodium git
+stow vscodium git --ignore='*/.gitkeep'
 # stow zsh
