@@ -55,13 +55,14 @@ git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git 	zsh/.oh-m
 git clone -q https://github.com/zsh-users/zsh-autosuggestions			zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone -q https://github.com/Powerlevel9k/powerlevel9k.git 			zsh/.oh-my-zsh/custom/themes/powerlevel9k
 git clone -q https://github.com/romkatv/powerlevel10k.git				zsh/.oh-my-zsh/custom/themes/powerlevel10k
+stow zsh
 
 #################
 #   Dev tools   #
 #################
 log "Installing dev tools"
 # Ansible
-sudo add-apt-repository --yes ppa:ansible/ansible && apt_update_install_quiet ansible
+sudo add-apt-repository --yes ppa:ansible/ansible > /dev/null && apt_update_install_quiet ansible
 # Docker
 sudo snap install docker
 COMPOSE_BIN="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"
@@ -71,7 +72,7 @@ sudo usermod -aG docker user
 # sudo snap install node --classic
 # npm install -q -g vtop express-generator
 # Java
-curl -s "https://get.sdkman.io" | bash
+curl -s "https://get.sdkman.io" | bash > /dev/null
 source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 sdk install java 11.0.7.hs-adpt
 sdk install gradle 5.5
@@ -107,3 +108,4 @@ apt_update_install_quiet brave-browser riot-desktop shutter balena-etcher-electr
 log "Populating dotfiles"
 stow fonts && sudo fc-cache -f
 stow zsh vscodium git
+# stow zsh
