@@ -4,3 +4,6 @@
 [submodule "nvm"]
 	path = nodejs/.config/.nvm
 	url = https://github.com/nvm-sh/nvm.git
+[submodule "z"]
+	path = z/.config/z
+	url = https://github.com/rupa/z.git

@@ -13,7 +13,7 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "workbench.iconTheme": "vscode-icons",
     "workbench.startupEditor": "newUntitledFile",
-    "terminal.integrated.fontFamily": "Menlo for Powerline",
+    "terminal.integrated.fontFamily": "MesloLGS NF",
     "terminal.integrated.scrollback": 10000,
     "window.menuBarVisibility": "toggle",
     "python.jediEnabled": false,
