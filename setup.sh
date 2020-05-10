@@ -80,10 +80,12 @@ function install_docker() {
 
 # Java
 function install_java() {
-    log "Java"
+    log "Sdkman"
     export SDKMAN_DIR="${XDG_CONFIG_HOME}/sdkman" && curl -s "https://get.sdkman.io" | bash > /dev/null
     source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+    log "Java"
     sdk install java 11.0.7.hs-adpt > /dev/null
+    log "Gradle"
     sdk install gradle 5.5 > /dev/null
 }
 
