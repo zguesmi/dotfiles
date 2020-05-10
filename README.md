@@ -12,3 +12,5 @@ sudo apt-get update && sudo apt-get install -y git && \
 
 TODO:
 - Show version of installed software
+- Guake config
+- Ignore changes in untracked files in stowed dirs

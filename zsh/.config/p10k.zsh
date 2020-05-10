@@ -25,8 +25,8 @@
   #                  My custom config                     #
   #########################################################
   # POWERLEVEL9K_DISABLE_RPROMPT=true
-  POWERLEVEL9K_VCS_FOREGROUND='red'
-  POWERLEVEL9K_VCS_BACKGROUND='white'
+  # POWERLEVEL9K_VCS_FOREGROUND=
+  # POWERLEVEL9K_VCS_BACKGROUND=
   ###################################################################################
 
 
