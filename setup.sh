@@ -5,15 +5,16 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # export XDG_CACHE_HOME="$HOME/.cache"
 export ZSH="${XDG_CONFIG_HOME}/oh-my-zsh"
 GR="\033[1;32m" # green
-BL="\033[1;33m" # blue
+YE="\033[1;33m" # yellow
+BL="\033[1;34m" # blue
 NC="\033[0m"    # no color
 
 function log_top_level() {
-    printf "\n${BL}<> ${1}${NC}\n"
+    printf "\n${BL}    <><> ${1}${NC}\n"
 }
 
 function log() {
-    printf "\n${GR}    * ${1}${NC}\n"
+    printf "${GR} * ${1}${NC}\n"
 }
 
 function add_deb_repo() {
@@ -46,17 +47,18 @@ function apt_update_install_quiet() {
 
 # OS packages
 function install_os_packages() {
-    OS_PACKAGES="apt-transport-https bat ca-certificates curl fzf git gnupg-agent guake htop httpie jq nmap "
-    OS_PACKAGES+="neofetch powerline software-properties-common stow terminator tree unzip vim wget zip zsh"
-    printf "${OS_PACKAGES}\n"
-    apt_update_quiet && apt_install_quiet $OS_PACKAGES
+    OS_PACKAGES_PART_1="apt-transport-https bat ca-certificates curl fzf git gnupg-agent guake htop httpie jq nmap "
+    OS_PACKAGES_PART_2="neofetch powerline software-properties-common stow terminator tree unzip vim wget zip zsh"
+    printf "${OS_PACKAGES_PART_1}\n"
+    printf "${OS_PACKAGES_PART_2}\n"
+    apt_update_quiet && apt_install_quiet ${OS_PACKAGES_PART_1} ${OS_PACKAGES_PART_2}
 }
 
 # Terminal
 function setup_terminal() {
-    log "Configuring zsh as the default shell for user: $USER"
+    log "Configure zsh as the default shell"
     chsh -s $(which zsh)
-    log "Installing oh-my-zsh addons"
+    log "Install oh-my-zsh addons"
     git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git 	${ZSH}/custom/plugins/zsh-syntax-highlighting
     git clone -q https://github.com/zsh-users/zsh-autosuggestions			${ZSH}/custom/plugins/zsh-autosuggestions
     git clone -q https://github.com/romkatv/powerlevel10k.git				${ZSH}/custom/themes/powerlevel10k
@@ -73,6 +75,7 @@ function install_docker() {
     COMPOSE_BIN="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"
     sudo curl -fsSL $COMPOSE_BIN -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
     sudo usermod -aG docker user
+    sudo usermod -aG docker $USER
 }
 
 # Java
@@ -93,8 +96,8 @@ function install_ansible() {
 # Nodejs
 function install_nodejs() {
     log "Nodejs & npm"
-    nvm install node
-    npm install -q -g vtop express-generator
+    # nvm install node
+    # npm install -q -g vtop express-generator
 }
 
 # Brave
