@@ -5,10 +5,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 GR="\033[1;32m" # green
 NC="\033[0m"    # no color
-# PREFIX="<><><><>"
 
 function log() {
-    printf "\n${GR}<><><> ${1} <><><>${NC}\n"
+    printf "\n${GR}>> ${1}${NC}\n"
 }
 
 function add_deb_repo() {
@@ -17,7 +16,7 @@ function add_deb_repo() {
     local GPG_URL=$3
 
     if [ ! -z $GPG_URL ]; then
-        sudo curl -fsSL $GPG_URL | sudo apt-key --keyring /etc/apt/trusted.gpg.d/$NAME.gpg add -
+        sudo curl -fsSL $GPG_URL | sudo apt-key --keyring /etc/apt/trusted.gpg.d/$NAME.gpg add - > /dev/null
     fi
 
     echo $REPO_URL | sudo tee /etc/apt/sources.list.d/$NAME.list
@@ -96,7 +95,7 @@ add_deb_repo "riot-desktop" \
 # Shutter
 sudo add-apt-repository --yes ppa:linuxuprising/shutter > /dev/null
 # Etcher
-sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
+sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61 > /dev/null
 add_deb_repo "balena-etcher" \
         "deb https://deb.etcher.io stable etcher"
 
