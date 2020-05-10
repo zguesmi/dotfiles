@@ -18,12 +18,24 @@ plugins=(
 source ${ZSH}/oh-my-zsh.sh
 [[ ! -f "${XDG_CONFIG_HOME}/p10k.zsh" ]] || source "${XDG_CONFIG_HOME}/p10k.zsh"
 
-# sdkman
-export SDKMAN_DIR="${XDG_CONFIG_HOME}/.sdkman"
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-
 # aliases
 [ -f ~/dotfiles/.aliases ] && source ~/dotfiles/.aliases
 
 IEXECDEV=${HOME}/iexecdev/iexec-deploy/core-dev/dot.bash_aliases
 [ -f ${IEXECDEV} ] && source ${IEXECDEV}
+
+# sdkman
+export SDKMAN_DIR="${XDG_CONFIG_HOME}/sdkman"
+[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+
+# nvm
+export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+
+# fzf
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+# TODO vim plugin
+
+# z
+Z_DIR="${XDG_CONFIG_HOME}/z"
+[ -s "$NVM_DIR/z.sh" ] && source "$NVM_DIR/z.sh"
