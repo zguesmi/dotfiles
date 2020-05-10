@@ -183,8 +183,8 @@ function main() {
     install_slack
 
     log_top_level "Populate dotfiles"
-    stow fonts && sudo fc-cache -f
-    stow --ignore='.gitkeep' git terminator vscodium
+    stow --ignore='.gitkeep' fonts git nvm ssh terminator vim vscodium
+    sudo fc-cache -f
     # stow zsh
 }
 

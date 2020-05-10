@@ -9,3 +9,6 @@ sudo apt-get update && sudo apt-get install -y git && \
     cd dotfiles && \
     bash setup.sh
 ```
+
+TODO:
+- Show version of installed software
