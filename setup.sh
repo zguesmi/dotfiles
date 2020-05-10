@@ -69,7 +69,7 @@ function setup_terminal() {
 function install_docker() {
     log "Docker"
     add_deb_repo "docker" \
-            "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+            "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" \
             "https://download.docker.com/linux/ubuntu/gpg" && \
     apt_update_install_quiet docker-ce docker-ce-cli containerd.io
     COMPOSE_BIN="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"
