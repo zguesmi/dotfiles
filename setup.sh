@@ -2,7 +2,7 @@
 
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
+# export XDG_CACHE_HOME="$HOME/.cache"
 export ZSH="${XDG_CONFIG_HOME}/oh-my-zsh"
 GR="\033[1;32m" # green
 NC="\033[0m"    # no color
@@ -107,5 +107,5 @@ apt_update_install_quiet brave-browser riot-desktop shutter balena-etcher-electr
 #################
 log "Populating dotfiles"
 stow fonts && sudo fc-cache -f
-stow vscodium git --ignore='*/.gitkeep'
+stow --ignore='.gitkeep' vscodium git
 # stow zsh
