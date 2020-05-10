@@ -10,11 +10,11 @@ BL="\033[1;34m" # blue
 NC="\033[0m"    # no color
 
 function log_top_level() {
-    printf "\n${BL}    <><> ${1}${NC}\n"
+    printf "\n${YE}    <><> ${1}${NC}\n\n"
 }
 
 function log() {
-    printf "${GR} * ${1}${NC}\n"
+    printf "${GR}${1}${NC}\n"
 }
 
 function add_deb_repo() {
