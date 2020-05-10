@@ -74,8 +74,8 @@ function install_docker() {
     apt_update_install_quiet docker-ce docker-ce-cli containerd.io
     COMPOSE_BIN="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"
     sudo curl -fsSL $COMPOSE_BIN -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
-    # sudo usermod -aG docker user
-    # sudo usermod -aG docker $USER
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
 }
 
 # Java
