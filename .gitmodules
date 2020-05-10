@@ -1,3 +1,6 @@
 [submodule "ohmyzsh"]
 	path = zsh/.config/oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "nvm"]
+	path = nodejs/.config/.nvm
+	url = https://github.com/nvm-sh/nvm.git
