@@ -8,37 +8,6 @@ GR="\033[1;32m" # green
 BL="\033[1;33m" # blue
 NC="\033[0m"    # no color
 
-function main() {
-    log_top_level "Install OS packages"
-    install_os_packages
-
-    log_top_level "Setup terminal"
-    setup_terminal
-
-    log_top_level "Install dev tools"
-    install_docker
-    install_java
-    install_ansible
-    install_nodejs
-
-    log_top_level "Install desktop apps"
-    install_brave
-    install_riot
-    install_shutter
-    install_etcher
-    install_codium
-    install_gitkraken
-    install_postman
-    install_slack
-
-    log_top_level "Populate dotfiles"
-    stow fonts && sudo fc-cache -f
-    stow --ignore='.gitkeep' git terminator vscodium
-    # stow zsh
-}
-
-main
-
 function log_top_level() {
     printf "\n${BL}<> ${1}${NC}\n"
 }
@@ -184,3 +153,34 @@ function install_slack() {
     log "Slack"
     sudo snap install slack --classic
 }
+
+function main() {
+    log_top_level "Install OS packages"
+    install_os_packages
+
+    log_top_level "Setup terminal"
+    setup_terminal
+
+    log_top_level "Install dev tools"
+    install_docker
+    install_java
+    install_ansible
+    install_nodejs
+
+    log_top_level "Install desktop apps"
+    install_brave
+    install_riot
+    install_shutter
+    install_etcher
+    install_codium
+    install_gitkraken
+    install_postman
+    install_slack
+
+    log_top_level "Populate dotfiles"
+    stow fonts && sudo fc-cache -f
+    stow --ignore='.gitkeep' git terminator vscodium
+    # stow zsh
+}
+
+main
