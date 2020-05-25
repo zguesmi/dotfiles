@@ -14,3 +14,5 @@ TODO:
 - Show version of installed software
 - Guake config
 - Ignore changes in untracked files in stowed dirs
+
+http://www.boekhoff.info/how-to-install-nodejs-and-npm-using-nvm-and-zsh-nvm/

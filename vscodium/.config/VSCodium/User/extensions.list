@@ -1,39 +1,32 @@
-// code --list-extensions
-
-christian-kohler.npm-intellisense
-christian-kohler.path-intellisense
-dbaeumer.vscode-eslint
-DigitalBrainstem.javascript-ejs-support
-eg2.vscode-npm-script
+# java
 GabrielBB.vscode-lombok
-HookyQR.beautify
-jasonnutter.search-node-modules
-JuanBlanco.solidity
-leizongmin.node-module-intellisense
-lextudio.restructuredtext
-mathiasfrohlich.Kotlin
-mikestead.dotenv
+vscjava.vscode-java-pack
+Pivotal.vscode-boot-dev-pack
+
+# tools
 ms-azuretools.vscode-docker
 ms-python.python
 ms-vscode-remote.remote-ssh
-ms-vscode-remote.remote-ssh-edit
-Pivotal.vscode-boot-dev-pack
-Pivotal.vscode-concourse
-Pivotal.vscode-manifest-yaml
-Pivotal.vscode-spring-boot
-redhat.java
-redhat.vscode-yaml
-streetsidesoftware.code-spell-checker
-VisualStudioExptTeam.vscodeintellicode
-vscjava.vscode-java-debug
-vscjava.vscode-java-dependency
-vscjava.vscode-java-pack
-vscjava.vscode-java-test
-vscjava.vscode-maven
-vscjava.vscode-spring-boot-dashboard
-vscjava.vscode-spring-initializr
-vscode-icons-team.vscode-icons
+
 vscoss.vscode-ansible
-waderyan.nodejs-extension-pack
-wholroyd.jinja
-xabikos.JavaScriptSnippets
+mikestead.dotenv
+redhat.vscode-yaml
+HookyQR.beautify
+vscode-icons-team.vscode-icons
+mhutchie.git-graph
+streetsidesoftware.code-spell-checker
+
+# misc
+# christian-kohler.npm-intellisense
+# christian-kohler.path-intellisense
+# dbaeumer.vscode-eslint
+# DigitalBrainstem.javascript-ejs-support
+# eg2.vscode-npm-script
+# jasonnutter.search-node-modules
+# JuanBlanco.solidity
+# leizongmin.node-module-intellisense
+# lextudio.restructuredtext
+# mathiasfrohlich.Kotlin
+# waderyan.nodejs-extension-pack
+# wholroyd.jinja
+# xabikos.JavaScriptSnippets
