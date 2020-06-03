@@ -6,12 +6,6 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+shift+g ctrl+shift+r",
-        "command": "workbench.action.tasks.runTask",
-        "args": "[Default] gradle bootRun",
-        "when": ""
-    },
-    {
         "key": "ctrl+=",
         "command": "-workbench.action.zoomIn"
     },

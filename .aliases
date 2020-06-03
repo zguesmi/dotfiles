@@ -58,9 +58,11 @@ alias dclsl="docker container ls -l"
 alias dclslq="docker container ls -l -q"
 alias dclsa="docker container ls -a"
 alias dclsaq="docker container ls -a -q"
+alias dcrm="docker container rm"
 alias dcip="docker container inspect --format '{{ .NetworkSettings.IPAddress }}' "
-dcrml() { docker container ls -l -q | docker container rm }
-dcrma() { docker container ls -a -q | docker container rm }
+dcrml() { docker container rm $(docker container ls -l -q) }
+dcrma() { docker container rm $(docker container ls -a -q) }
+dcrmaf() { docker container rm -f $(docker container ls -a -q) }
 # docker image
 alias di="docker image"
 alias dils="docker image ls"

@@ -197,6 +197,7 @@ function main() {
     # git remote set-url origin git@github.com:zguesmi/dotfiles.git
     # sudo apt install gnome-tweak-tool
     # sudo apt install chrome-gnome-shell
+    # install metamask
 }
 
 main
