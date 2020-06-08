@@ -1,6 +1,15 @@
 [global_config]
   inactive_color_offset = 0.5
 [keybindings]
+[profiles]
+  [[default]]
+    cursor_shape = ibeam
+    cursor_color = "#aaaaaa"
+    show_titlebar = False
+    scrollback_infinite = True
+  [[Zied]]
+    cursor_color = "#aaaaaa"
+    scrollback_infinite = True
 [layouts]
   [[default]]
     [[[child1]]]
@@ -10,12 +19,3 @@
       parent = ""
       type = Window
 [plugins]
-[profiles]
-  [[default]]
-    cursor_color = "#aaaaaa"
-    cursor_shape = ibeam
-    scrollback_infinite = True
-    show_titlebar = False
-  [[Zied]]
-    cursor_color = "#aaaaaa"
-    scrollback_infinite = True
