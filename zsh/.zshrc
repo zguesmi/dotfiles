@@ -22,8 +22,8 @@ source ${ZSH}/oh-my-zsh.sh
 # aliases
 [ -f ~/dotfiles/.aliases ] && source ~/dotfiles/.aliases
 
-IEXECDEV=${HOME}/iexecdev/iexec-deploy/core-dev/dot.bash_aliases
-[ -f ${IEXECDEV} ] && source ${IEXECDEV}
+IEXEC_DEV="${HOME}/iexec/dev"
+[ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/core-dev/dot.bash_aliases
 
 # sdkman
 export SDKMAN_DIR="${XDG_CONFIG_HOME}/sdkman"

@@ -31,6 +31,8 @@ alias x='xclip -selection clipboard -in'          # cut to clipboard
 alias v='xclip -selection clipboard -out'         # paste from clipboard
 alias c='xclip -selection clipboard -in -filter'  # copy clipboard
 # ddccontrol
+alias codium='codium --extensions-dir ~/.config/VSCodium/User/extensions'
+alias dotfiles='codium ~/dotfiles'
 
 # ------------------------------ #
 #              vpn               #
@@ -56,9 +58,11 @@ alias dclsl="docker container ls -l"
 alias dclslq="docker container ls -l -q"
 alias dclsa="docker container ls -a"
 alias dclsaq="docker container ls -a -q"
+alias dcrm="docker container rm"
 alias dcip="docker container inspect --format '{{ .NetworkSettings.IPAddress }}' "
-dcrml() {docker container ls -l -q | docker container rm }
-dcrma() {docker container ls -a -q | docker container rm }
+dcrml() { docker container rm $(docker container ls -l -q) }
+dcrma() { docker container rm $(docker container ls -a -q) }
+dcrmaf() { docker container rm -f $(docker container ls -a -q) }
 # docker image
 alias di="docker image"
 alias dils="docker image ls"
@@ -72,7 +76,6 @@ alias dn="docker network"
 # docker volume
 alias dv="docker volume"
 
-
 # ------------------------------ #
 #             gradle             #
 # ------------------------------ #
@@ -80,3 +83,10 @@ alias grdc="gradle clean"
 alias grdb="gradle clean build --refresh-dependencies"
 alias grdr="gradle bootRun"
 alias grdt='gradle test -i --test'
+
+# ------------------------------ #
+#              git               #
+# ------------------------------ #
+alias gp='git pull && git fetch -p'
+alias gcr='git commit README.md -m "Update README"'
+alias gcr='git commit .gitignore -m "Update gitignore"'

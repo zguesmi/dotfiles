@@ -98,8 +98,9 @@ function install_ansible() {
 # Nodejs
 function install_nodejs() {
     log "Nodejs & npm"
-    # nvm install node
-    # npm install -q -g vtop express-generator
+    nvm install v10.20.1
+    npm config set prefix $NVM_DIR/versions/node/v10.20.1
+    npm install -q -g vtop express-generator
 }
 
 # Brave
@@ -136,9 +137,15 @@ function install_etcher() {
 }
 
 # Codium
-function install_codium() {
+function install_vscodium() {
     log "Codium"
     sudo snap install codium --classic
+    stow --ignore='.gitkeep' vscodium
+    for ext in $(grep -v '^#' vscodium/.config/VSCodium/User/extensions.list)
+    do
+        codium --extensions-dir ~/.config/VSCodium/User/extensions --install-extension $ext
+        # echo $ext
+    done
 }
 
 # Gitkraken
@@ -177,15 +184,20 @@ function main() {
     install_riot
     install_shutter
     install_etcher
-    install_codium
+    install_vscodium
     install_gitkraken
     install_postman
     install_slack
 
     log_top_level "Populate dotfiles"
-    stow --ignore='.gitkeep' fonts git nvm ssh terminator vim vscodium
+    stow --ignore='.gitkeep' fonts git nvm ssh terminator vim
     sudo fc-cache -f
     # stow zsh
+
+    # git remote set-url origin git@github.com:zguesmi/dotfiles.git
+    # sudo apt install gnome-tweak-tool
+    # sudo apt install chrome-gnome-shell
+    # install metamask
 }
 
 main
