@@ -19,20 +19,20 @@ alias tohex="printf '%d\n'"
 alias cpssh="cat ~/.ssh/id_rsa.pub | clipcp"
 # alias dud="du -d 1 -h"
 # alias duf="du -sh"
-alias https='http --default-scheme=https'
-alias brave='brave-browser'
-alias ipp='curl ipinfo.io/ip'
-alias ipw='ip addr show dev wlp2s0'
-# alias ipe='ip addr show dev eth'
-alias zshconf='vim ~/.zshrc'
-alias vimconf='vim ~/.vimrc'
-# alias vscconf='vim ~/.config/Code'
-alias x='xclip -selection clipboard -in'          # cut to clipboard
-alias v='xclip -selection clipboard -out'         # paste from clipboard
-alias c='xclip -selection clipboard -in -filter'  # copy clipboard
+alias https="http --default-scheme=https"
+alias brave="brave-browser"
+alias ipp="curl ipinfo.io/ip"
+alias ipw="ip addr show dev wlp2s0"
+# alias ipe="ip addr show dev eth"
+alias zshconf="vim ~/.zshrc"
+alias vimconf="vim ~/.vimrc"
+# alias vscconf="vim ~/.config/Code"
+alias x="xclip -selection clipboard -in"          # cut to clipboard
+alias v="xclip -selection clipboard -out"         # paste from clipboard
+alias c="xclip -selection clipboard -in -filter"  # copy clipboard
 # ddccontrol
-alias codium='codium --extensions-dir ~/.config/VSCodium/User/extensions'
-alias dotfiles='codium ~/dotfiles'
+alias codium="codium --extensions-dir ~/.config/VSCodium/User/extensions"
+alias dotfiles="codium ~/dotfiles"
 
 # ------------------------------ #
 #              vpn               #
@@ -82,11 +82,16 @@ alias dv="docker volume"
 alias grdc="gradle clean"
 alias grdb="gradle clean build --refresh-dependencies"
 alias grdr="gradle bootRun"
-alias grdt='gradle test -i --test'
+alias grdt="gradle test -i --test"
 
 # ------------------------------ #
 #              git               #
 # ------------------------------ #
-alias gp='git pull && git fetch -p'
-alias gcr='git commit README.md -m "Update README"'
-alias gcr='git commit .gitignore -m "Update gitignore"'
+alias gp="git pull && git fetch -p"
+alias gcr="git commit README.md -m 'Update README'"
+alias gci="git commit .gitignore -m 'Update gitignore'"
+
+# ------------------------------ #
+#             iExec              #
+# ------------------------------ #
+alias iexecdev="codium $IEXEC_DEV/iexec-dev.code-workspace"

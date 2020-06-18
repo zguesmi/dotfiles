@@ -19,11 +19,11 @@ plugins=(
 source ${ZSH}/oh-my-zsh.sh
 [[ ! -f "${XDG_CONFIG_HOME}/p10k.zsh" ]] || source "${XDG_CONFIG_HOME}/p10k.zsh"
 
+export IEXEC_DEV="${HOME}/iexec/dev"
+[ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/core-dev/dot.bash_aliases
+
 # aliases
 [ -f ~/dotfiles/.aliases ] && source ~/dotfiles/.aliases
-
-IEXEC_DEV="${HOME}/iexec/dev"
-[ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/core-dev/dot.bash_aliases
 
 # sdkman
 export SDKMAN_DIR="${XDG_CONFIG_HOME}/sdkman"

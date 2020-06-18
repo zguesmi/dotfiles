@@ -1,3 +1,4 @@
-*/.ssh/*
-vscodium/*
-fonts/*
+ssh/
+vscodium/
+fonts/
+themes/
