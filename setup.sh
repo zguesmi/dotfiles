@@ -48,7 +48,7 @@ function apt_update_install_quiet() {
 # OS packages
 function install_os_packages() {
     OS_PACKAGES_PART_1="apt-transport-https bat ca-certificates curl fzf git gnupg-agent guake htop httpie jq nmap "
-    OS_PACKAGES_PART_2="neofetch powerline software-properties-common stow terminator tree unzip vim wget xclip zip zsh"
+    OS_PACKAGES_PART_2="neofetch gnome-shell-pomodoro powerline software-properties-common stow terminator tree unzip vim wget xclip zip zsh"
     printf "${OS_PACKAGES_PART_1}\n"
     printf "${OS_PACKAGES_PART_2}\n"
     apt_update_quiet && apt_install_quiet ${OS_PACKAGES_PART_1} ${OS_PACKAGES_PART_2}
