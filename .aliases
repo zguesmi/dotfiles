@@ -33,6 +33,7 @@ alias c="xclip -selection clipboard -in -filter"  # copy clipboard
 # ddccontrol
 alias codium="codium --extensions-dir ~/.config/VSCodium/User/extensions"
 alias dotfiles="codium ~/dotfiles"
+tempdir() { cd $(mktemp -d) }
 
 # ------------------------------ #
 #              vpn               #
@@ -95,3 +96,11 @@ alias gci="git commit .gitignore -m 'Update gitignore'"
 #             iExec              #
 # ------------------------------ #
 alias iexecdev="codium $IEXEC_DEV/iexec-dev.code-workspace"
+alias common="codium $IEXEC_DEV/iexec-common"
+alias core="codium $IEXEC_DEV/iexec-core"
+alias worker="codium $IEXEC_DEV/iexec-worker"
+alias sms="codium $IEXEC_DEV/iexec-sms"
+alias result="codium $IEXEC_DEV/iexec-result-proxy"
+alias post="codium $IEXEC_DEV/tee-worker-post-compute"
+alias int="codium $IEXEC_DEV/iexec-core-integration-tests"
+alias sde="codium $IEXEC_DEV/iexec-sde"
