@@ -15,6 +15,8 @@ HookyQR.beautify
 vscode-icons-team.vscode-icons
 mhutchie.git-graph
 streetsidesoftware.code-spell-checker
+shengchen.vscode-checkstyle
+ryanluker.vscode-coverage-gutters
 
 # misc
 # christian-kohler.npm-intellisense

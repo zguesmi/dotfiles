@@ -40,3 +40,6 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 # z
 Z_DIR="${XDG_CONFIG_HOME}/z"
 [ -s "$NVM_DIR/z.sh" ] && source "$NVM_DIR/z.sh"
+
+# .env
+[ -f ~/dotfiles/.env ] && source ~/dotfiles/.env

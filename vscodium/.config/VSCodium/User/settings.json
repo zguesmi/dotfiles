@@ -5,7 +5,7 @@
         "**/.gradle": true,
         "**/.project": true,
         "**/.settings": true,
-        // "**/bin": true,
+        "**/bin": true,
         // "**/build": true
     },
     "editor.suggestSelection": "first",
@@ -18,7 +18,6 @@
     "window.menuBarVisibility": "toggle",
     "python.jediEnabled": false,
     "window.zoomLevel": 0,
-    "java.configuration.updateBuildConfiguration": "automatic",
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 120,
     "workbench.statusBar.visible": true,
@@ -28,10 +27,16 @@
         "FSPF",
         "IEXEC",
         "MRENCLAVE",
+        "Orderbook",
         "Workerpool",
         "autowired",
-        "ethereum"
+        "ethereum",
+        "initializable",
+        "unnotified",
+        "unstarted",
+        "workerpools"
     ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "[javascript]": {
         "editor.defaultFormatter": "HookyQR.beautify"
     },
@@ -42,14 +47,43 @@
     "[json]": {
         "editor.defaultFormatter": "HookyQR.beautify"
     },
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "java.semanticHighlighting.enabled": true,
     "files.associations": {
         "**/roles/**/*.yml": "ansible",
         "**/ansible/**/*.yml": "ansible",
         "**/*.yml": "yaml"
     },
     "ansible.validation": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        } 
+    ],
+    "python.languageServer": "Microsoft",
+    "sonarlint.disableTelemetry": true,
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/home/zied/.config/VSCodium/User/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
-    "java.refactor.renameFromFileExplorer": "autoApply"
+    "java.refactor.renameFromFileExplorer": "autoApply",
+    "java.imports.gradle.wrapper.checksums": [
+        {
+            "sha256": "28b330c20a9a73881dfe9702df78d4d78bf72368e8906c70080ab6932462fe9e",
+            "allowed": true
+        },
+        {
+            "sha256": "3dc39ad650d40f6c029bd8ff605c6d95865d657dbfdeacdb079db0ddfffedf9f",
+            "allowed": true
+        }
+    ],
+    "java.completion.importOrder": [
+        "",
+        "javax",
+        "java",
+        "#"
+    ],
+    "java.semanticHighlighting.enabled": true,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.sources.organizeImports.staticStarThreshold": 3,
+    "java.sources.organizeImports.starThreshold": 5,
+    "java.project.importOnFirstTimeStartup": "automatic",
+    "coverage-gutters.showLineCoverage": true,
+    "coverage-gutters.coverageBaseDir": "build/reports/jacoco/test",
 }

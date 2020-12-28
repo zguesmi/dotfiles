@@ -1,9 +1,9 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "ctrl+shift+r",
+        "key": "ctrl+alt+u",
         "command": "spring-boot-dashboard.localapp.start",
-        "when": "editorTextFocus"
+        //"when": "editorTextFocus"
     },
     {
         "key": "ctrl+=",
