@@ -34,8 +34,13 @@ export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 # fzf
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+FZF_DEFAULT_OPTS="--preview 'batcat --style=numbers,changes --color=always --line-range :500 {}'"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --height 90% --layout=reverse --border"
 # TODO vim plugin
+
+# bat
+# ln -s /usr/bin/batcat ~/.local/bin/bat
+# export BAT_STYLE="--style=numbers,changes"
 
 # z
 Z_DIR="${XDG_CONFIG_HOME}/z"
