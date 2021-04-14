@@ -13,14 +13,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     colored-man-pages docker docker-compose git nvm sdk
     # vscode
+    httpie
     zsh-autosuggestions zsh-syntax-highlighting
 )
 
 source ${ZSH}/oh-my-zsh.sh
 [[ ! -f "${XDG_CONFIG_HOME}/p10k.zsh" ]] || source "${XDG_CONFIG_HOME}/p10k.zsh"
-
-export IEXEC_DEV="${HOME}/iexec/dev"
-[ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/core-dev/dot.bash_aliases
 
 # aliases
 [ -f ~/dotfiles/.aliases ] && source ~/dotfiles/.aliases
@@ -46,5 +44,8 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --height 90% --layout=reverse --borde
 Z_DIR="${XDG_CONFIG_HOME}/z"
 [ -s "$NVM_DIR/z.sh" ] && source "$NVM_DIR/z.sh"
 
-# .env
+export IEXEC_DEV="${HOME}/iexec/dev"
+[ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/core-dev/dot.bash_aliases
 [ -f ~/dotfiles/.env ] && source ~/dotfiles/.env
+
+[ -s "/home/zied/.web3j/source.sh" ] && source "/home/zied/.web3j/source.sh"

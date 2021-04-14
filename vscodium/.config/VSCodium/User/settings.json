@@ -5,7 +5,7 @@
         "**/.gradle": true,
         "**/.project": true,
         "**/.settings": true,
-        "**/bin": true,
+        // "**/bin": true,
         // "**/build": true
     },
     "editor.suggestSelection": "first",
@@ -17,7 +17,6 @@
     "terminal.integrated.scrollback": 10000,
     "window.menuBarVisibility": "toggle",
     "python.jediEnabled": false,
-    "window.zoomLevel": 0,
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 120,
     "workbench.statusBar.visible": true,
@@ -32,7 +31,9 @@
         "autowired",
         "ethereum",
         "initializable",
+        "palaemon",
         "unnotified",
+        "unpublish",
         "unstarted",
         "workerpools"
     ],
@@ -86,4 +87,8 @@
     "java.project.importOnFirstTimeStartup": "automatic",
     "coverage-gutters.showLineCoverage": true,
     "coverage-gutters.coverageBaseDir": "build/reports/jacoco/test",
+    "solidity.compileUsingRemoteVersion": "v0.4.17+commit.bdeb9e52",
+    "cSpell.enableFiletypes": [
+        "solidity"
+    ],
 }

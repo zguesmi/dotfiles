@@ -15,15 +15,13 @@ alias updg="sudo apt update && sudo apt -y upgrade"
 alias zshrc="vim ~/.zshrc"
 alias sourcez="source ~/.zshrc"
 alias pingd="ping duckduckgo.com"
-alias tohex="printf '%d\n'"
+alias tohex="printf '%x\n'"
+alias todec="printf '%d\n'"
 alias cpssh="cat ~/.ssh/id_rsa.pub | clipcp"
 # alias dud="du -d 1 -h"
 # alias duf="du -sh"
-alias https="http --default-scheme=https"
+# alias https="http --default-scheme=https"
 alias brave="brave-browser"
-alias ipp="curl ipinfo.io/ip"
-alias ipw="ip addr show dev wlp2s0"
-# alias ipe="ip addr show dev eth"
 alias zshconf="vim ~/.zshrc"
 alias vimconf="vim ~/.vimrc"
 # alias vscconf="vim ~/.config/Code"
@@ -35,6 +33,8 @@ alias codium="GTK_IM_MODULE=xim codium --extensions-dir ~/.config/VSCodium/User/
 alias dotfiles="codium ~/dotfiles"
 tempdir() { cd $(mktemp -d) }
 alias bat="batcat"
+# networking
+alias myip="curl https://ipinfo.io/ip; echo"
 
 # ------------------------------ #
 #              vpn               #
@@ -81,10 +81,11 @@ alias dv="docker volume"
 # ------------------------------ #
 #             gradle             #
 # ------------------------------ #
-alias grdc="gradle clean"
-alias grdb="gradle clean build --refresh-dependencies"
-alias grdr="gradle bootRun"
-alias grdt="gradle test -i --test"
+alias gradlec="./gradlew clean"
+alias gradleb="./gradlew clean build"
+alias gradlebr="./gradlew clean build --refresh-dependencies"
+alias gradler="./gradlew bootRun"
+alias gradlet="./gradlew test -i --test"
 
 # ------------------------------ #
 #              git               #
