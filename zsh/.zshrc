@@ -44,8 +44,12 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --height 90% --layout=reverse --borde
 Z_DIR="${XDG_CONFIG_HOME}/z"
 [ -s "$NVM_DIR/z.sh" ] && source "$NVM_DIR/z.sh"
 
+# web3j cli
+[ -s "/home/zied/.web3j/source.sh" ] && source "/home/zied/.web3j/source.sh"
+
+# Golang
+export PATH=$PATH:/usr/local/go/bin
+
 export IEXEC_DEV="${HOME}/iexec/dev"
 [ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/core-dev/dot.bash_aliases
 [ -f ~/dotfiles/.env ] && source ~/dotfiles/.env
-
-[ -s "/home/zied/.web3j/source.sh" ] && source "/home/zied/.web3j/source.sh"

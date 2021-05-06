@@ -37,4 +37,8 @@
         "key": "alt+left",
         "command": "workbench.action.navigateBack"
     },
+    {
+        "key": "ctrl+t",
+        "command": "terminal.focus"
+    },
 ]

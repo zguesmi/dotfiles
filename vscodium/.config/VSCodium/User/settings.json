@@ -5,7 +5,7 @@
         "**/.gradle": true,
         "**/.project": true,
         "**/.settings": true,
-        // "**/bin": true,
+        "**/bin": true,
         // "**/build": true
     },
     "editor.suggestSelection": "first",
@@ -25,7 +25,9 @@
         "DATASET",
         "FSPF",
         "IEXEC",
+        "Ipfs",
         "MRENCLAVE",
+        "OFFCHAIN",
         "Orderbook",
         "Workerpool",
         "autowired",
@@ -91,4 +93,7 @@
     "cSpell.enableFiletypes": [
         "solidity"
     ],
+    "java.trace.server": "verbose",
+    "vsintellicode.java.completionsEnabled": false,
+    "editor.detectIndentation": false,
 }
