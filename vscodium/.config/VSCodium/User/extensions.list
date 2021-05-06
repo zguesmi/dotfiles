@@ -7,6 +7,7 @@ Pivotal.vscode-boot-dev-pack
 ms-azuretools.vscode-docker
 ms-python.python
 ms-vscode-remote.remote-ssh
+golang.Go
 
 vscoss.vscode-ansible
 mikestead.dotenv
