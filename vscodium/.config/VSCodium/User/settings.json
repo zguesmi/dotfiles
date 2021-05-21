@@ -94,6 +94,13 @@
         "solidity"
     ],
     "java.trace.server": "verbose",
-    "vsintellicode.java.completionsEnabled": false,
     "editor.detectIndentation": false,
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": false
+        }
+    },
+    "vsintellicode.java.completionsEnabled": false,
 }
