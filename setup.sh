@@ -54,6 +54,18 @@ function install_os_packages() {
     apt_update_quiet && apt_install_quiet ${OS_PACKAGES_PART_1} ${OS_PACKAGES_PART_2}
 }
 
+function install_additional_tools() {
+    sudo apt install -o Dpkg::Options::="--force-overwrite" ripgrep
+    sudo snap install procs # htop
+    sudo apt install exa # ls
+    # https://github.com/Peltoche/lsd#installation
+    # https://github.com/dandavison/delta#installation
+    sudo snap install duf-utility
+    sudo apt-get install fd-find
+    ln -s $(which fdfind) ~/.local/bin/fd
+    # https://github.com/rs/curlie
+}
+
 # Terminal
 function setup_terminal() {
     log "Configure zsh as the default shell"

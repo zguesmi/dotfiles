@@ -35,6 +35,7 @@ tempdir() { cd $(mktemp -d) }
 alias bat="batcat"
 # networking
 alias myip="curl https://ipinfo.io/ip; echo"
+alias du="duf"
 
 # ------------------------------ #
 #              vpn               #
