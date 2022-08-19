@@ -94,3 +94,13 @@ alias gradlet="./gradlew test -i --test"
 alias gp="git pull && git fetch -p"
 alias gcr="git commit README.md -m 'Update README'"
 alias gci="git commit .gitignore -m 'Update gitignore'"
+
+# ------------------------------ #
+#            hardhat             #
+# ------------------------------ #
+alias hh="npx hardhat"
+alias hhc="npx hardhat compile"
+alias hht="npx hardhat test"
+
+# Fixes iexec command for newer version of nodejs.
+alias iexec="npx iexec"
