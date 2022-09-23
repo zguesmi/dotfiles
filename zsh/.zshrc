@@ -42,7 +42,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --height 90% --layout=reverse --borde
 
 # z
 Z_DIR="${XDG_CONFIG_HOME}/z"
-[ -s "$NVM_DIR/z.sh" ] && source "$NVM_DIR/z.sh"
+[ -s "$Z_DIR/z.sh" ] && source "$Z_DIR/z.sh"
 
 # web3j cli
 [ -s "/home/zied/.web3j/source.sh" ] && source "/home/zied/.web3j/source.sh"
