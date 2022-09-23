@@ -112,7 +112,7 @@ function install_java() {
 function install_nodejs() {
     # This works in a ZSH shell.
     log "Nodejs & npm"
-    nvm install default
+    nvm install stable
 }
 
 # Brave
