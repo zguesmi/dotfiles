@@ -10,7 +10,7 @@ ms-vscode-remote.remote-ssh
 golang.Go
 
 VisualStudioExptTeam.vscodeintellicode
-vscoss.vscode-ansible
+#vscoss.vscode-ansible
 mikestead.dotenv
 redhat.vscode-yaml
 HookyQR.beautify
