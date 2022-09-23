@@ -22,11 +22,11 @@ function add_deb_repo() {
     local REPO_URL=$2
     local GPG_URL=$3
 
-    if [ ! -z $GPG_URL ]; then
-        sudo curl -fsSL $GPG_URL | sudo apt-key --keyring /etc/apt/trusted.gpg.d/$NAME.gpg add - && \
-        echo $REPO_URL | sudo tee /etc/apt/sources.list.d/$NAME.list
+    if [ ! -z ${GPG_URL} ]; then
+        curl -fsSL ${GPG_URL} | sudo gpg --dearmor -o /etc/apt/keyrings/${NAME}.gpg && \
+        echo ${REPO_URL} | sudo tee /etc/apt/sources.list.d/${NAME}.list
     else
-        echo $REPO_URL | sudo tee /etc/apt/sources.list.d/$NAME.list
+        echo ${REPO_URL} | sudo tee /etc/apt/sources.list.d/${NAME}.list
     fi
 }
 
@@ -48,7 +48,8 @@ function apt_update_install_quiet() {
 # OS packages
 function install_os_packages() {
     OS_PACKAGES_PART_1="apt-transport-https bat ca-certificates curl fzf git gnupg-agent guake htop httpie jq nmap "
-    OS_PACKAGES_PART_2="neofetch gnome-shell-pomodoro powerline software-properties-common stow terminator tree unzip vim wget xclip zip zsh"
+    OS_PACKAGES_PART_2="neofetch powerline software-properties-common stow terminator tree unzip vim wget xclip zip zsh"
+    #gnome-shell-pomodoro
     printf "${OS_PACKAGES_PART_1}\n"
     printf "${OS_PACKAGES_PART_2}\n"
     apt_update_quiet && apt_install_quiet ${OS_PACKAGES_PART_1} ${OS_PACKAGES_PART_2}
@@ -80,12 +81,12 @@ function setup_terminal() {
 # Docker
 function install_docker() {
     log "Docker"
-    add_deb_repo "docker" \
-            "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" \
+    NAME="docker"
+    add_deb_repo "${NAME}" \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/${NAME}.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" \
             "https://download.docker.com/linux/ubuntu/gpg" && \
-    apt_update_install_quiet docker-ce docker-ce-cli containerd.io
-    COMPOSE_BIN="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"
-    sudo curl -fsSL $COMPOSE_BIN -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+    apt_update_install_quiet docker-ce docker-ce-cli containerd.io docker-compose-plugin
     sudo groupadd docker
     sudo usermod -aG docker $USER
 }
@@ -102,51 +103,51 @@ function install_java() {
 }
 
 # Ansible
-function install_ansible() {
-    log "Ansible"
-    sudo add-apt-repository --yes ppa:ansible/ansible > /dev/null && apt_update_install_quiet ansible
-}
+#function install_ansible() {
+#    log "Ansible"
+#    sudo add-apt-repository --yes ppa:ansible/ansible > /dev/null && apt_update_install_quiet ansible
+#}
 
 # Nodejs
 function install_nodejs() {
+    # This works in a ZSH shell.
     log "Nodejs & npm"
-    nvm install v10.20.1
-    npm config set prefix $NVM_DIR/versions/node/v10.20.1
-    npm install -q -g vtop express-generator
+    nvm install default
 }
 
 # Brave
 function install_brave() {
     log "Brave"
-    add_deb_repo "brave-browser" \
-            "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+    NAME="brave-browser"
+    add_deb_repo "${NAME}" \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/${NAME}.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" \
             "https://brave-browser-apt-release.s3.brave.com/brave-core.asc" && \
     apt_update_install_quiet brave-browser
 }
 
-# Riot
-function install_riot() {
-    log "Riot"
-    add_deb_repo "riot-desktop" \
-            "deb https://packages.riot.im/debian/ default main" \
-            "https://packages.riot.im/debian/riot-im-archive-keyring.gpg" && \
-    apt_update_install_quiet riot-desktop
-}
+# Element
+#function install_element() {
+#    log "Element"
+#    add_deb_repo "element-desktop" \
+#            "deb https://packages.riot.im/debian/ default main" \
+#            "https://packages.riot.im/debian/riot-im-archive-keyring.gpg" && \
+#    apt_update_install_quiet riot-desktop
+#}
 
 # Shutter
-function install_shutter() {
-    log "Shutter"
-    sudo add-apt-repository --update --yes ppa:linuxuprising/shutter > /dev/null && \
-    apt_install_quiet shutter
-}
+#function install_shutter() {
+#    log "Shutter"
+#    sudo add-apt-repository --update --yes ppa:linuxuprising/shutter > /dev/null && \
+#    apt_install_quiet shutter
+#}
 
 # Etcher
-function install_etcher() {
-    log "Etcher"
-    sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61 && \
-    add_deb_repo "balena-etcher" "deb https://deb.etcher.io stable etcher" && \
-    apt_update_install_quiet balena-etcher-electron
-}
+#function install_etcher() {
+#    log "Etcher"
+#    sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61 && \
+#    add_deb_repo "balena-etcher" "deb https://deb.etcher.io stable etcher" && \
+#    apt_update_install_quiet balena-etcher-electron
+#}
 
 # Codium
 function install_vscodium() {
@@ -155,16 +156,16 @@ function install_vscodium() {
     stow --ignore='.gitkeep' vscodium
     for ext in $(grep -v '^#' vscodium/.config/VSCodium/User/extensions.list)
     do
-        codium --extensions-dir ~/.config/VSCodium/User/extensions --install-extension $ext
         # echo $ext
+        codium --extensions-dir ~/.config/VSCodium/User/extensions --install-extension $ext
     done
 }
 
 # Gitkraken
-function install_gitkraken() {
-    log "Gitkraken"
-    sudo snap install gitkraken
-}
+#function install_gitkraken() {
+#    log "Gitkraken"
+#    sudo snap install gitkraken
+#}
 
 # Postman
 function install_postman() {
@@ -175,7 +176,7 @@ function install_postman() {
 # Slack
 function install_slack() {
     log "Slack"
-    sudo snap install slack --classic
+    sudo snap install slack
 }
 
 function main() {
@@ -188,18 +189,18 @@ function main() {
     log_top_level "Install dev tools"
     install_docker
     install_java
-    install_ansible
     install_nodejs
+    #install_ansible
 
     log_top_level "Install desktop apps"
     install_brave
-    install_riot
-    install_shutter
-    install_etcher
     install_vscodium
-    install_gitkraken
     install_postman
     install_slack
+    #install_element
+    #install_shutter
+    # install_etcher
+    #install_gitkraken
 
     log_top_level "Populate dotfiles"
     stow --ignore='.gitkeep' fonts git nvm ssh terminator vim themes
@@ -209,7 +210,6 @@ function main() {
     # git remote set-url origin git@github.com:zguesmi/dotfiles.git
     # sudo apt install gnome-tweak-tool
     # sudo apt install chrome-gnome-shell
-    # install metamask
 }
 
 main
