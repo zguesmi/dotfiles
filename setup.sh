@@ -30,19 +30,10 @@ function add_deb_repo() {
     fi
 }
 
-# apt update
-function apt_update_quiet() {
-    sudo apt-get update > /dev/null
-}
-
-# apt install
-function apt_install_quiet() {
-    sudo apt-get install -y $@ > /dev/null
-}
-
 # apt update & install
 function apt_update_install_quiet() {
-    apt_update_quiet && apt_install_quiet
+    sudo apt-get update > /dev/null && \
+            sudo apt-get install -y $@ #> /dev/null
 }
 
 # OS packages
@@ -52,7 +43,7 @@ function install_os_packages() {
     #gnome-shell-pomodoro
     printf "${OS_PACKAGES_PART_1}\n"
     printf "${OS_PACKAGES_PART_2}\n"
-    apt_update_quiet && apt_install_quiet ${OS_PACKAGES_PART_1} ${OS_PACKAGES_PART_2}
+    apt_update_install_quiet ${OS_PACKAGES_PART_1} ${OS_PACKAGES_PART_2}
 }
 
 function install_additional_tools() {
