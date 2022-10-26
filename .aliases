@@ -50,7 +50,7 @@ alias nords="nordvpn status"
 # ------------------------------ #
 dockerfile() { docker run --rm -v /var/run/docker.sock:/var/run/docker.sock chenzj/dfimage $(docker images --filter=reference=$1 --format "{{.ID}}") }
 # docker-compose
-alias dk="docker-compose"
+alias dk="docker compose"
 # docker container
 alias dc="docker container"
 alias dcri="docker container run -it"
@@ -104,3 +104,27 @@ alias hht="npx hardhat test"
 
 # Fixes iexec command for newer version of nodejs.
 alias iexec="npx iexec"
+
+# ------------------------------ #
+#           Chain RPC            #
+# ------------------------------ #
+
+rpc() {
+    curl -s -X POST \
+        --header "Content-Type: application/json" \
+        --data '{"jsonrpc":"2.0", "id":1, "method":"'$2'", "params":'$3'}' \
+        $1 | jq
+}
+
+lastblock() {
+    rpc $1 'eth_getBlockByNumber' '["latest", false]' | jq .result
+}
+lastblocknumber() {
+    rpc $1 'eth_getBlockByNumber' '["latest", false]' | jq .result.number | xargs printf '%d\n'
+}
+lastblockhash() {
+    rpc $1 'eth_getBlockByNumber' '["latest", false]' | jq .result.hash
+}
+issyncing() {
+    rpc $1 "eth_syncing" "[]" | jq .result
+}

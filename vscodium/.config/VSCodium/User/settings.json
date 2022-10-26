@@ -135,4 +135,5 @@
     "",
   ],
 "editor.formatOnSaveMode": "modifications",
+"hardhat.telemetry": false,
 }
