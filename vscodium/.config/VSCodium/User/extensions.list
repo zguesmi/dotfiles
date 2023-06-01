@@ -1,8 +1,3 @@
-# java
-GabrielBB.vscode-lombok
-vscjava.vscode-java-pack
-Pivotal.vscode-boot-dev-pack
-
 # tools
 ms-azuretools.vscode-docker
 ms-python.python
@@ -10,7 +5,6 @@ ms-vscode-remote.remote-ssh
 golang.Go
 
 VisualStudioExptTeam.vscodeintellicode
-#vscoss.vscode-ansible
 mikestead.dotenv
 redhat.vscode-yaml
 HookyQR.beautify
@@ -18,22 +12,6 @@ vscode-icons-team.vscode-icons
 mhutchie.git-graph
 streetsidesoftware.code-spell-checker
 shengchen.vscode-checkstyle
-ryanluker.vscode-coverage-gutters
-#JuanBlanco.solidity
+NomicFoundation.hardhat-solidity
 NomicFoundation.hardhat-solidity
 doi.fileheadercomment
-
-# misc
-# christian-kohler.npm-intellisense
-# christian-kohler.path-intellisense
-# dbaeumer.vscode-eslint
-# DigitalBrainstem.javascript-ejs-support
-# eg2.vscode-npm-script
-# jasonnutter.search-node-modules
-# JuanBlanco.solidity
-# leizongmin.node-module-intellisense
-# lextudio.restructuredtext
-# mathiasfrohlich.Kotlin
-# waderyan.nodejs-extension-pack
-# wholroyd.jinja
-# xabikos.JavaScriptSnippets
