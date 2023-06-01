@@ -19,8 +19,9 @@ mhutchie.git-graph
 streetsidesoftware.code-spell-checker
 shengchen.vscode-checkstyle
 ryanluker.vscode-coverage-gutters
-JuanBlanco.solidity
+#JuanBlanco.solidity
 NomicFoundation.hardhat-solidity
+doi.fileheadercomment
 
 # misc
 # christian-kohler.npm-intellisense

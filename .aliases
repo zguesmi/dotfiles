@@ -29,9 +29,9 @@ alias x="xclip -selection clipboard -in"          # cut to clipboard
 alias v="xclip -selection clipboard -out"         # paste from clipboard
 alias c="xclip -selection clipboard -in -filter"  # copy clipboard
 # ddccontrol
-alias codium="GTK_IM_MODULE=xim codium --extensions-dir ~/.config/VSCodium/User/extensions"
-alias code="GTK_IM_MODULE=xim codium --extensions-dir ~/.config/VSCodium/User/extensions"
-alias dotfiles="codium ~/dotfiles"
+alias vscodium="GTK_IM_MODULE=xim codium --extensions-dir ~/.config/VSCodium/User/extensions"
+alias code="vscodium"
+alias dotfiles="vscodium ~/dotfiles"
 tempdir() { cd $(mktemp -d) }
 alias bat="batcat"
 # networking
