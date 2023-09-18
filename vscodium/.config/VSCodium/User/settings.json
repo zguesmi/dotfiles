@@ -60,53 +60,12 @@
     "**/ansible/**/*.yml": "ansible",
     "**/*.yml": "yaml"
   },
-  "ansible.validation": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
-  "vim.cursorStylePerMode.insert": "line",
   "python.languageServer": "Default",
-  "sonarlint.disableTelemetry": true,
-  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/home/zied/.config/VSCodium/User/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
-  "java.refactor.renameFromFileExplorer": "autoApply",
-  "java.imports.gradle.wrapper.checksums": [
-    {
-      "sha256": "28b330c20a9a73881dfe9702df78d4d78bf72368e8906c70080ab6932462fe9e",
-      "allowed": true
-    },
-    {
-      "sha256": "3dc39ad650d40f6c029bd8ff605c6d95865d657dbfdeacdb079db0ddfffedf9f",
-      "allowed": true
-    }
-  ],
-  "java.completion.importOrder": [
-    "",
-    "javax",
-    "java",
-    "#"
-  ],
-  "java.semanticHighlighting.enabled": true,
-  "java.configuration.updateBuildConfiguration": "automatic",
-  "java.sources.organizeImports.staticStarThreshold": 3,
-  "java.sources.organizeImports.starThreshold": 5,
-  "java.project.importOnFirstTimeStartup": "automatic",
-  "coverage-gutters.showLineCoverage": true,
-  "coverage-gutters.coverageBaseDir": "build/reports/jacoco/test",
-  "solidity.compileUsingRemoteVersion": "v0.4.17+commit.bdeb9e52",
   "cSpell.enableFiletypes": [
     "dockerfile",
     "groovy",
     "solidity"
 ],
-  "java.trace.server": "verbose",
   "editor.detectIndentation": false,
   "[go]": {
     "editor.insertSpaces": false,
@@ -116,38 +75,34 @@
     }
   },
   "go.toolsManagement.autoUpdate": true,
-  // "java.home": "/home/zied/.config/sdkman/candidates/java/current",
   "redhat.telemetry.enabled": false,
   "workbench.editorAssociations": {
     "*.html": "default"
   },
   "terminal.integrated.cursorStyle": "line",
   "terminal.explorerKind": "external",
-  "java.templates.fileHeader": [
-    "/*",
-    "* Copyright ${year} IEXEC BLOCKCHAIN TECH",
-    "*",
-    "* Licensed under the Apache License, Version 2.0 (the \"License\");",
-    "* you may not use this file except in compliance with the License.",
-    "* You may obtain a copy of the License at",
-    "*",
-    "*     http://www.apache.org/licenses/LICENSE-2.0",
-    "*",
-    "* Unless required by applicable law or agreed to in writing, software",
-    "* distributed under the License is distributed on an \"AS IS\" BASIS,",
-    "* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
-    "* See the License for the specific language governing permissions and",
-    "* limitations under the License.",
-    "*/",
-    "",
-  ],
-"editor.formatOnSaveMode": "modifications",
-"hardhat.telemetry": false,
-"workbench.iconTheme": "material-icon-theme",
-"solidity.telemetry": true,
-"fileHeaderComment.template": {
-
-    "*": "/******************************************************************************  * Copyright {year} IEXEC BLOCKCHAIN TECH                                       *  *                                                                            *  * Licensed under the Apache License, Version 2.0 (the \"License\");            *  * you may not use this file except in compliance with the License.           *  * You may obtain a copy of the License at                                    *  *                                                                            *  *     http://www.apache.org/licenses/LICENSE-2.0                             *  *                                                                            *  * Unless required by applicable law or agreed to in writing, software        *  * distributed under the License is distributed on an \"AS IS\" BASIS,          *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   *  * See the License for the specific language governing permissions and        *  * limitations under the License.                                             *  ******************************************************************************/"
-},
-"typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSaveMode": "modifications",
+  "workbench.iconTheme": "material-icon-theme",
+  "solidity.telemetry": true,
+  "fileHeaderComment.template": {
+    "*": [
+      "/******************************************************************************",
+      "* Copyright ${year} IEXEC BLOCKCHAIN TECH                                       *",
+      "*                                                                            *",
+      "* Licensed under the Apache License, Version 2.0 (the \"License\");            *",
+      "* you may not use this file except in compliance with the License.           *",
+      "* You may obtain a copy of the License at                                    *",
+      "*                                                                            *",
+      "*     http://www.apache.org/licenses/LICENSE-2.0                             *",
+      "*                                                                            *",
+      "* Unless required by applicable law or agreed to in writing, software        *",
+      "* distributed under the License is distributed on an \"AS IS\" BASIS,          *",
+      "* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   *",
+      "* See the License for the specific language governing permissions and        *",
+      "* limitations under the License.                                             *",
+      "******************************************************************************/",
+      ""
+    ],
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
 }
