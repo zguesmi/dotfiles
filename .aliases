@@ -1,53 +1,13 @@
 #!/bin/sh
 
 # ------------------------------ #
-#         good manners           #
+#         Good manners           #
 # ------------------------------ #
 alias plz="sudo"
 
 
 # ------------------------------ #
-#              misc              #
-# ------------------------------ #
-alias upd="sudo apt update"
-alias upg="sudo apt -y upgrade"
-alias updg="sudo apt update && sudo apt -y upgrade"
-alias zshrc="vim ~/.zshrc"
-alias sourcez="source ~/.zshrc"
-alias pingd="ping duckduckgo.com"
-alias tohex="printf '%x\n'"
-alias todec="printf '%d\n'"
-alias cpssh="cat ~/.ssh/id_rsa.pub | clipcp"
-# alias dud="du -d 1 -h"
-# alias duf="du -sh"
-# alias https="http --default-scheme=https"
-alias brave="brave-browser"
-alias zshconf="vim ~/.zshrc"
-alias vimconf="vim ~/.vimrc"
-# alias vscconf="vim ~/.config/Code"
-alias x="xclip -selection clipboard -in"          # cut to clipboard
-alias v="xclip -selection clipboard -out"         # paste from clipboard
-alias c="xclip -selection clipboard -in -filter"  # copy clipboard
-# ddccontrol
-alias vscodium="GTK_IM_MODULE=xim codium --extensions-dir ~/.config/VSCodium/User/extensions"
-alias code="vscodium"
-alias dotfiles="vscodium ~/dotfiles"
-tempdir() { cd $(mktemp -d) }
-alias bat="batcat"
-# networking
-alias myip="curl https://ipinfo.io/ip; echo"
-alias du="duf"
-
-# ------------------------------ #
-#              vpn               #
-# ------------------------------ #
-alias nordc="nordvpn connect"
-alias nordd="nordvpn disconnect"
-alias nords="nordvpn status"
-
-
-# ------------------------------ #
-#             docker             #
+#             Docker             #
 # ------------------------------ #
 dockerfile() { docker run --rm -v /var/run/docker.sock:/var/run/docker.sock chenzj/dfimage $(docker images --filter=reference=$1 --format "{{.ID}}") }
 # docker-compose
@@ -79,35 +39,31 @@ alias dsip="docker service inspect --format '{{ .NetworkSettings.IPAddress }}' "
 alias dn="docker network"
 # docker volume
 alias dv="docker volume"
+dockerfile() {
+    docker run \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        --rm chenzj/dfimage \
+        $(docker images --filter=reference=$1 --format "{{.ID}}")
+}
+
 
 # ------------------------------ #
-#             gradle             #
+#              Git               #
 # ------------------------------ #
-alias gradlec="./gradlew clean"
-alias gradleb="./gradlew clean build"
-alias gradlebr="./gradlew clean build --refresh-dependencies"
-alias gradler="./gradlew bootRun"
-alias gradlet="./gradlew test -i --test"
+alias gp='git pull && git fetch -p'
+alias gs='git status'
+
 
 # ------------------------------ #
-#              git               #
-# ------------------------------ #
-alias gp="git pull && git fetch -p"
-alias gcr="git commit README.md -m 'Update README'"
-alias gci="git commit .gitignore -m 'Update gitignore'"
-
-# ------------------------------ #
-#            hardhat             #
+#            Hardhat             #
 # ------------------------------ #
 alias hh="npx hardhat"
 alias hhc="npx hardhat compile"
-alias hht="npx hardhat test"
+alias hht="REPORT_GAS=true npx hardhat test"
 
-# Fixes iexec command for newer version of nodejs.
-alias iexec="npx iexec"
 
 # ------------------------------ #
-#           Chain RPC            #
+#        Blockchain RPC          #
 # ------------------------------ #
 
 rpc() {
@@ -129,3 +85,37 @@ lastblockhash() {
 issyncing() {
     rpc $1 "eth_syncing" "[]" | jq .result
 }
+
+
+# ------------------------------ #
+#              Misc              #
+# ------------------------------ #
+alias upd="sudo apt update"
+alias upg="sudo apt -y upgrade"
+alias updg="sudo apt update && sudo apt -y upgrade"
+alias zshrc="vim ~/.zshrc"
+alias sourcez="source ~/.zshrc"
+alias pingd="ping duckduckgo.com"
+alias tohex="printf '%x\n'"
+alias todec="printf '%d\n'"
+alias cpssh="cat ~/.ssh/id_rsa.pub | clipcp"
+# alias dud="du -d 1 -h"
+# alias duf="du -sh"
+# alias https="http --default-scheme=https"
+alias brave="brave-browser"
+alias zshconf="vim ~/.zshrc"
+alias vimconf="vim ~/.vimrc"
+# alias vscconf="vim ~/.config/Code"
+alias x="xclip -selection clipboard -in"          # cut to clipboard
+alias v="xclip -selection clipboard -out"         # paste from clipboard
+alias c="xclip -selection clipboard -in -filter"  # copy clipboard
+# ddccontrol
+alias vscodium="GTK_IM_MODULE=xim codium --extensions-dir ~/.config/VSCodium/User/extensions"
+alias code="vscodium"
+alias dotfiles="vscodium ~/dotfiles"
+tempdir() { cd $(mktemp -d) }
+alias bat="batcat"
+# networking
+alias myip="curl https://ipinfo.io/ip; echo"
+alias du="duf"
+alias tophistory='history | sed "s/^ *//" | cut -d" " -f2- | sort | uniq -c | sort -nr | head -n 30'
