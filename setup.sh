@@ -30,16 +30,14 @@ function add_deb_repo() {
     fi
 }
 
-# apt update & install
 function apt_update_install_quiet() {
     sudo apt-get update > /dev/null && \
             sudo apt-get install -y $@ #> /dev/null
 }
 
-# OS packages
 function install_os_packages() {
     OS_PACKAGES_PART_1="apt-transport-https bat ca-certificates curl fzf git gnupg-agent guake htop httpie jq nmap "
-    OS_PACKAGES_PART_2="neofetch powerline software-properties-common stow terminator tree unzip vim wget xclip zip zsh"
+    OS_PACKAGES_PART_2="neofetch powerline shutter software-properties-common stow terminator tree unzip vim wget xclip zip zsh"
     #gnome-shell-pomodoro
     printf "${OS_PACKAGES_PART_1}\n"
     printf "${OS_PACKAGES_PART_2}\n"
@@ -58,7 +56,6 @@ function install_additional_tools() {
     # https://github.com/rs/curlie
 }
 
-# Terminal
 function setup_terminal() {
     log "Configure zsh as the default shell"
     chsh -s $(which zsh)
@@ -69,7 +66,6 @@ function setup_terminal() {
     stow --ignore='.gitkeep' zsh
 }
 
-# Docker
 function install_docker() {
     log "Docker"
     NAME="docker"
@@ -82,7 +78,6 @@ function install_docker() {
     sudo usermod -aG docker $USER
 }
 
-# Java
 function install_java() {
     log "Sdkman"
     export SDKMAN_DIR="${XDG_CONFIG_HOME}/sdkman" && curl -s "https://get.sdkman.io" | bash > /dev/null
@@ -93,20 +88,12 @@ function install_java() {
     sdk install gradle 5.5 > /dev/null
 }
 
-# Ansible
-#function install_ansible() {
-#    log "Ansible"
-#    sudo add-apt-repository --yes ppa:ansible/ansible > /dev/null && apt_update_install_quiet ansible
-#}
-
-# Nodejs
 function install_nodejs() {
     # This works in a ZSH shell.
     log "Nodejs & npm"
     nvm install stable
 }
 
-# Brave
 function install_brave() {
     log "Brave"
     NAME="brave-browser"
@@ -116,31 +103,6 @@ function install_brave() {
     apt_update_install_quiet brave-browser
 }
 
-# Element
-#function install_element() {
-#    log "Element"
-#    add_deb_repo "element-desktop" \
-#            "deb https://packages.riot.im/debian/ default main" \
-#            "https://packages.riot.im/debian/riot-im-archive-keyring.gpg" && \
-#    apt_update_install_quiet riot-desktop
-#}
-
-# Shutter
-#function install_shutter() {
-#    log "Shutter"
-#    sudo add-apt-repository --update --yes ppa:linuxuprising/shutter > /dev/null && \
-#    apt_install_quiet shutter
-#}
-
-# Etcher
-#function install_etcher() {
-#    log "Etcher"
-#    sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61 && \
-#    add_deb_repo "balena-etcher" "deb https://deb.etcher.io stable etcher" && \
-#    apt_update_install_quiet balena-etcher-electron
-#}
-
-# Codium
 function install_vscodium() {
     log "Codium"
     sudo snap install codium --classic
@@ -152,22 +114,19 @@ function install_vscodium() {
     done
 }
 
-# Gitkraken
-#function install_gitkraken() {
-#    log "Gitkraken"
-#    sudo snap install gitkraken
-#}
-
-# Postman
 function install_postman() {
     log "Postman"
     sudo snap install postman
 }
 
-# Slack
 function install_slack() {
     log "Slack"
     sudo snap install slack
+}
+
+function install_bitwarden() {
+    log "Bitwarden"
+    sudo snap install bitwarden
 }
 
 function main() {
@@ -181,24 +140,20 @@ function main() {
     install_docker
     install_java
     install_nodejs
-    #install_ansible
 
     log_top_level "Install desktop apps"
     install_brave
     install_vscodium
     install_postman
     install_slack
-    #install_element
-    #install_shutter
-    # install_etcher
-    #install_gitkraken
+    install_bitwarden
 
     log_top_level "Populate dotfiles"
     stow --ignore='.gitkeep' fonts git nvm ssh terminator vim themes
     sudo fc-cache -f
     # stow zsh
 
-    # git remote set-url origin git@github.com:zguesmi/dotfiles.git
+    git remote set-url origin git@github.com:zguesmi/dotfiles.git
     # sudo apt install gnome-tweak-tool
     # sudo apt install chrome-gnome-shell
 }

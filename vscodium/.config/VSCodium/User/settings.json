@@ -19,7 +19,6 @@
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 120,
   "workbench.statusBar.visible": true,
-  "workbench.activityBar.visible": true,
   "cSpell.userWords": [
     "autowired",
     "bellecour",
@@ -71,7 +70,7 @@
     "editor.insertSpaces": false,
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": false
+      "source.organizeImports": "never"
     }
   },
   "go.toolsManagement.autoUpdate": true,

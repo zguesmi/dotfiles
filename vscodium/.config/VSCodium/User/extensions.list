@@ -9,10 +9,10 @@ VisualStudioExptTeam.vscodeintellicode
 mikestead.dotenv
 redhat.vscode-yaml
 HookyQR.beautify
-vscode-icons-team.vscode-icons
+#vscode-icons-team.vscode-icons
+PKief.material-icon-theme
 mhutchie.git-graph
 streetsidesoftware.code-spell-checker
 shengchen.vscode-checkstyle
-NomicFoundation.hardhat-solidity
 NomicFoundation.hardhat-solidity
 doi.fileheadercomment
