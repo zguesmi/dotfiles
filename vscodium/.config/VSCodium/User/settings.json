@@ -82,7 +82,7 @@
   "terminal.explorerKind": "external",
   "editor.formatOnSaveMode": "modifications",
   "workbench.iconTheme": "material-icon-theme",
-  "solidity.telemetry": true,
+  "solidity.telemetry": false,
   "fileHeaderComment.template": {
     "*": [
       "/******************************************************************************",

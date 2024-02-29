@@ -36,7 +36,7 @@ function apt_update_install_quiet() {
 }
 
 function install_os_packages() {
-    OS_PACKAGES_PART_1="apt-transport-https bat ca-certificates curl fzf git gnupg-agent guake htop httpie jq nmap "
+    OS_PACKAGES_PART_1="apt-transport-https bat ca-certificates chrome-gnome-shell curl fzf git gnupg-agent guake htop httpie jq nmap "
     OS_PACKAGES_PART_2="neofetch powerline shutter software-properties-common stow terminator tree unzip vim wget xclip zip zsh"
     #gnome-shell-pomodoro
     printf "${OS_PACKAGES_PART_1}\n"
@@ -127,6 +127,16 @@ function install_slack() {
 function install_bitwarden() {
     log "Bitwarden"
     sudo snap install bitwarden
+}
+
+function display_manual_setup() {
+    log "Additional manual setup"
+    echo "Install Brave extensions:"
+    echo "Onetab https://chromewebstore.google.com/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall"
+    echo "Bitwarden https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb"
+    echo "Vimium https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb"
+    echo "Gnome https://chromewebstore.google.com/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep"
+    echo "Night theme https://extensions.gnome.org/extension/2236/night-theme-switcher/"
 }
 
 function main() {
