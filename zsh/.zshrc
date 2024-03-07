@@ -51,5 +51,5 @@ Z_DIR="${XDG_CONFIG_HOME}/z"
 export PATH=$PATH:/usr/local/go/bin
 
 export IEXEC_DEV="${HOME}/iexec/dev"
-[ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/core-dev/dot.bash_aliases
+[ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/devtools/.aliases
 [ -f ~/dotfiles/.env ] && source ~/dotfiles/.env
