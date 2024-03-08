@@ -130,7 +130,6 @@ function install_bitwarden() {
 }
 
 function display_manual_setup() {
-    log "Additional manual setup"
     echo "Install Brave extensions:"
     echo "Onetab https://chromewebstore.google.com/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall"
     echo "Bitwarden https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb"
@@ -157,6 +156,9 @@ function main() {
     install_postman
     install_slack
     install_bitwarden
+
+    log_top_level "Manual setup"
+    display_manual_setup
 
     log_top_level "Populate dotfiles"
     stow --ignore='.gitkeep' fonts git nvm ssh terminator vim themes
