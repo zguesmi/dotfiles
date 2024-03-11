@@ -11,9 +11,11 @@ export ZSH="${XDG_CONFIG_HOME}/oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
-    colored-man-pages docker docker-compose git nvm sdk
+    colored-man-pages git
+    # docker docker-compose
+    # nvm
     # vscode
-    httpie
+    # httpie
     zsh-autosuggestions zsh-syntax-highlighting
 )
 
