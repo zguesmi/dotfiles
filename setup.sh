@@ -63,7 +63,7 @@ function setup_terminal() {
     git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git 	${ZSH}/custom/plugins/zsh-syntax-highlighting
     git clone -q https://github.com/zsh-users/zsh-autosuggestions			${ZSH}/custom/plugins/zsh-autosuggestions
     git clone -q https://github.com/romkatv/powerlevel10k.git				${ZSH}/custom/themes/powerlevel10k
-    stow --ignore='.gitkeep' zsh
+    stow --ignore='.gitkeep' zsh # Needed for the rest of the setup.
 }
 
 function install_docker() {
@@ -161,9 +161,8 @@ function main() {
     display_manual_setup
 
     log_top_level "Populate dotfiles"
-    stow --ignore='.gitkeep' fonts git nvm ssh terminator vim themes
+    stow --ignore='.gitkeep' autostart fonts git nvm ssh themes terminator vim
     sudo fc-cache -f
-    # stow zsh
 
     git remote set-url origin git@github.com:zguesmi/dotfiles.git
     # sudo apt install gnome-tweak-tool
