@@ -2,35 +2,5 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "[Default] gradle clean",
-            "type": "shell",
-            "command": "gradle clean"
-        },
-        {
-            "label": "[Default] gradle clean build --refresh-dependencies",
-            "type": "shell",
-            "command": "gradle clean build --refresh-dependencies -Dtest.profile=skipDocker",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "[Default] gradle test",
-            "type": "shell",
-            "command": "gradle test jacocoTestReport -Dtest.profile=skipDocker",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "[Default] gradle bootRun",
-            "type": "shell",
-            "command": "gradle bootRun"
-        }
-    ]
+    "tasks": []
 }
