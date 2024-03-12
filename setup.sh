@@ -107,7 +107,7 @@ function install_vscodium() {
     log "Codium"
     sudo snap install codium --classic
     stow --ignore='.gitkeep' vscodium
-    for ext in $(grep -v '^#' vscodium/.config/VSCodium/User/extensions.list)
+    for ext in $(grep -v '^#' vscodium/.config/VSCodium/User/extensions.md)
     do
         # echo $ext
         codium --extensions-dir ~/.config/VSCodium/User/extensions --install-extension $ext
