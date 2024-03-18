@@ -136,6 +136,11 @@ function display_manual_setup() {
     echo "Vimium https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb"
     echo "Gnome https://chromewebstore.google.com/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep"
     echo "Night theme https://extensions.gnome.org/extension/2236/night-theme-switcher/"
+
+    echo "Install missing VSCode extensions"
+    echo "ext install tintinweb.vscode-solidity-language"
+    echo "ext install tintinweb.graphviz-interactive-preview"
+    echo "ext install tintinweb.solidity-visual-auditor"
 }
 
 function main() {
