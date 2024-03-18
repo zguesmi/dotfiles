@@ -16,9 +16,9 @@ ms-azuretools.vscode-docker
 ms-vscode-remote.remote-ssh
 bierner.markdown-mermaid
 VisualStudioExptTeam.vscodeintellicode
-mikestead.dotenv
+#### mikestead.dotenv
 redhat.vscode-yaml
 HookyQR.beautify
 mhutchie.git-graph
 streetsidesoftware.code-spell-checker
-doi.fileheadercomment
+jebbs.plantuml
