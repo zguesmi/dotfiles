@@ -23,3 +23,4 @@ mhutchie.git-graph
 streetsidesoftware.code-spell-checker
 jebbs.plantuml
 hbenl.vscode-test-explorer
+hbenl.vscode-mocha-test-adapter
