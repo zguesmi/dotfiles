@@ -31,8 +31,8 @@ function add_deb_repo() {
 }
 
 function apt_update_install_quiet() {
-    sudo apt-get update > /dev/null && \
-            sudo apt-get install -y $@ #> /dev/null
+    sudo apt update > /dev/null && \
+            sudo apt install -y $@ #> /dev/null
 }
 
 function install_os_packages() {
@@ -46,12 +46,10 @@ function install_os_packages() {
 
 function install_additional_tools() {
     sudo apt install -o Dpkg::Options::="--force-overwrite" ripgrep
-    sudo snap install procs # htop
     sudo apt install exa # ls
     # https://github.com/Peltoche/lsd#installation
-    # https://github.com/dandavison/delta#installation
-    sudo snap install duf-utility
-    sudo apt-get install fd-find
+    sudo apt install duf-utility
+    sudo apt install fd-find
     ln -s $(which fdfind) ~/.local/bin/fd
     # https://github.com/rs/curlie
 }
