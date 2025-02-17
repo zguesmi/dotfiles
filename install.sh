@@ -5,8 +5,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # export XDG_CACHE_HOME="$HOME/.cache"
 export ZSH="${XDG_CONFIG_HOME}/ohmyzsh"
 
-LOG_FILE=install.log
-
 GR="\033[1;32m" # green
 YE="\033[1;33m" # yellow
 BL="\033[1;34m" # blue
@@ -18,11 +16,6 @@ function log_top_level() {
 
 function log() {
     printf "${GR}  -> ${1}${NC}\n"
-}
-
-function apt_update_install_quiet() {
-    sudo apt update >> ${LOG_FILE} && \
-        sudo apt install -y $@ >> ${LOG_FILE}
 }
 
 function install_tools() {
@@ -60,7 +53,7 @@ function install_tools() {
     # https://github.com/rs/curlie
 
     printf "${PACKAGES}\n"
-    apt_update_install_quiet ${PACKAGES}
+    sudo apt update && sudo apt install -y ${PACKAGES}
     ln -s $(which fdfind) ~/.local/bin/fd
 }
 
@@ -109,8 +102,6 @@ function print_post_install_instructions() {
 }
 
 function main() {
-    echo "Log file: ${LOG_FILE}"
-
     log_top_level "Install OS packages"
     install_tools
 

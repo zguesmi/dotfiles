@@ -4,10 +4,10 @@ Clone repository and run the script `install.sh` to setup new machines.
 
 ```
 cd ~
-sudo apt update && sudo apt install -y git && \
-    git clone --recurse-submodules https://github.com/zguesmi/dotfiles.git && \
-    cd dotfiles && \
-    bash install.sh
+sudo apt update && sudo apt install -y git
+git clone https://github.com/zguesmi/dotfiles.git
+cd dotfiles
+bash install.sh
 ```
 
 TODO:
