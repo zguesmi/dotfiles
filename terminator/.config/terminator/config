@@ -1,23 +1,25 @@
 [global_config]
-  inactive_color_offset = 0.5
+  inactive_color_offset = 0.25
+  inactive_bg_color_offset = 0.3055555555555556
   suppress_multiple_term_dialog = True
   case_sensitive = False
 [keybindings]
 [profiles]
   [[default]]
     cursor_shape = ibeam
-    cursor_color = "#aaaaaa"
+    font = UbuntuMono Nerd Font Mono 14
     show_titlebar = False
     scrollback_infinite = True
+    use_system_font = False
+    title_use_system_font = False
+    title_font = UbuntuMono Nerd Font Mono 12
   [[Zied]]
     cursor_shape = ibeam
-    cursor_color = "#aaaaaa"
     show_titlebar = False
     scrollback_infinite = True
   [[Light]]
     background_color = "#ffffff"
     cursor_shape = ibeam
-    cursor_color = "#aaaaaa"
     foreground_color = "#000000"
     show_titlebar = False
     scrollback_infinite = True
@@ -26,6 +28,7 @@
     [[[child1]]]
       parent = window0
       type = Terminal
+      profile = default
     [[[window0]]]
       parent = ""
       type = Window

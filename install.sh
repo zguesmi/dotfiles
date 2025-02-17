@@ -31,6 +31,8 @@ function install_tools() {
         fd-find
         fzf
         git
+        gnome-shell-extension-manager
+        gnome-tweaks
         guake
         htop
         httpie
@@ -100,6 +102,7 @@ function print_post_install_instructions() {
     echo "Install Brave extensions:"
     echo "Onetab https://chromewebstore.google.com/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall"
     echo "Bitwarden https://chromewebstore.google.com/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb"
+    echo "Metamask https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn"
     echo "Vimium https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb"
     echo "Gnome https://chromewebstore.google.com/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep"
     echo "Night theme https://extensions.gnome.org/extension/2236/night-theme-switcher/"
