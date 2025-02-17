@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# TODO:
+# - Better log management
+# - Fix NVM issue
+
 
 export XDG_CONFIG_HOME="$HOME/.config"
 # export XDG_CACHE_HOME="$HOME/.cache"
@@ -23,8 +27,7 @@ function install_tools() {
         bat
         chrome-gnome-shell
         curl
-        duf-utility
-        exa
+        duf
         fd-find
         fzf
         git
@@ -36,7 +39,7 @@ function install_tools() {
         powerline
         ripgrep
         stow
-        terminator""
+        terminator
         tree
         unzip
         vim
@@ -49,11 +52,13 @@ function install_tools() {
     # gnupg-agent
     # gnome-tweak-tool
     # chrome-gnome-shell
+    # eza
     # https://github.com/Peltoche/lsd#installation
     # https://github.com/rs/curlie
 
     printf "${PACKAGES}\n"
     sudo apt update && sudo apt install -y ${PACKAGES}
+    mkdir ~/.local/bin
     ln -s $(which fdfind) ~/.local/bin/fd
 }
 
@@ -70,17 +75,16 @@ function install_ohmyzsh() {
 
 function install_devtools() {
     log "NVM"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | zsh
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
     # This works in a ZSH shell.
     log "Nodejs & npm"
-    nvm install stable
+    nvm install stable # TODO
     log "VSCode"
     sudo snap install code --classic
     log "Docker"
     curl -fsSL https://get.docker.com | sh
     sudo groupadd docker
     sudo usermod -aG docker $USER
-    docker run hello-world
 }
 
 function install_apps() {
@@ -115,7 +119,7 @@ function main() {
     install_apps
 
     log_top_level "Populate dotfiles"
-    stow --ignore='.gitkeep' autostart fonts git nvm ssh themes terminator vim
+    stow --ignore='.gitkeep' autostart fonts git ssh themes terminator vim
     fc-cache -f -v # Update fonts.
 
     log_top_level "Post install instructions"
@@ -126,7 +130,3 @@ function main() {
 }
 
 main
-
-# If the camera isn't working, possible fixes:
-# `sudo usermod -aG video $USER`
-# `systemctl --user restart pipewire`

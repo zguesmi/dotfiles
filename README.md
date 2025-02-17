@@ -14,3 +14,12 @@ TODO:
 - Show version of installed software
 - Guake config
 - Ignore changes in untracked files in stowed dirs
+
+
+### Ubuntu camera issue:
+If the camera isn't working, possible fixes:
+
+```
+sudo usermod -aG video $USER
+systemctl --user restart pipewire
+```
