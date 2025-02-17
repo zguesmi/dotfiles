@@ -1,18 +1,16 @@
 # dotfiles
-I "git clone" and "setup.sh" to reproduce my config on new machines
 
-## Start by installing git and cloning the repo
+Clone repository and run the script `install.sh` to setup new machines.
+
 ```
 cd ~
-sudo apt-get update && sudo apt-get install -y git && \
+sudo apt update && sudo apt install -y git && \
     git clone --recurse-submodules https://github.com/zguesmi/dotfiles.git && \
     cd dotfiles && \
-    bash setup.sh
+    bash install.sh
 ```
 
 TODO:
 - Show version of installed software
 - Guake config
 - Ignore changes in untracked files in stowed dirs
-
-http://www.boekhoff.info/how-to-install-nodejs-and-npm-using-nvm-and-zsh-nvm/

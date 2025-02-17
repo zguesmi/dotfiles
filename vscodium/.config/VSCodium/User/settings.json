@@ -1,100 +1,89 @@
 {
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.factorypath": true,
-        "**/.gradle": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/bin": true,
-        // "**/build": true
-    },
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 4,
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.startupEditor": "newUntitledFile",
-    "terminal.integrated.fontFamily": "MesloLGS NF",
-    "terminal.integrated.scrollback": 10000,
-    "window.menuBarVisibility": "toggle",
-    "python.jediEnabled": false,
-    "editor.wordWrap": "on",
-    "editor.wordWrapColumn": 120,
-    "workbench.statusBar.visible": true,
-    "cSpell.userWords": [
-        "autowired",
-        "bellecour",
-        "bootnode",
-        "Bootnodes",
-        "DATASET",
-        "ethereum",
-        "ethersproject",
-        "FSPF",
-        "IEXEC",
-        "initializable",
-        "Ipfs",
-        "keccak",
-        "MRENCLAVE",
-        "nomicfoundation",
-        "nomiclabs",
-        "OFFCHAIN",
-        "Orderbook",
-        "palaemon",
-        "println",
-        "sidechain",
-        "struct",
-        "typechain",
-        "unnotified",
-        "unpublish",
-        "unstarted",
-        "viviani",
-        "Workerpool",
-        "workerpools"
-    ],
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "[javascript]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "diffEditor.ignoreTrimWhitespace": false,
-    "[json]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "files.associations": {
-        "**/roles/**/*.yml": "ansible",
-        "**/ansible/**/*.yml": "ansible",
-        "**/*.yml": "yaml"
-    },
-    "python.languageServer": "Default",
-    "cSpell.enableFiletypes": [
-        "dockerfile",
-        "groovy",
-        "solidity"
-    ],
-    "editor.detectIndentation": false,
-    "[go]": {
-        "editor.insertSpaces": false,
-        "editor.formatOnSave": false,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "never"
-        }
-    },
-    "go.toolsManagement.autoUpdate": true,
-    "redhat.telemetry.enabled": false,
-    "workbench.editorAssociations": {
-        "*.html": "default"
-    },
-    "terminal.integrated.cursorStyle": "line",
-    "terminal.explorerKind": "external",
-    "workbench.iconTheme": "material-icon-theme",
-    "solidity.telemetry": false,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "git.autofetch": true,
-    // "solidity.compileUsingRemoteVersion": "v0.8.20+commit.a1b79de6",
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "git.confirmSync": false,
-    "files.trimTrailingWhitespace": true,
-    "editor.formatOnSaveMode": "modifications",
-    "mochaExplorer.timeout": 20000,
+  // "[html]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[javascript]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  "[json]": {
+    // "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.indentSize": 2
+  },
+  // "[typescript]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  "cSpell.enabledFileTypes": {
+    "*": true,
+    "markdown": true,
+    "solidity": true
+  },
+  "cSpell.userWords": [
+    "bellecour",
+    "bootnode",
+    "bootnodes",
+    "datapool",
+    "datapools",
+    "dataset",
+    "ethereum",
+    "ethersproject",
+    "iexec",
+    "initializable",
+    "ipfs",
+    "keccak",
+    "mrenclave",
+    "nomicfoundation",
+    "nomiclabs",
+    "offchain",
+    "Orderbook",
+    "println",
+    "sidechain",
+    "struct",
+    "typechain",
+    "unnotified",
+    "unpublish",
+    "unstarted",
+    "viviani",
+    "workerpool",
+    "workerpools"
+  ],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "modifications",
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 4,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 120,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "**/*.yml": "yaml",
+    "**/ansible/**/*.yml": "ansible",
+    "**/roles/**/*.yml": "ansible"
+  },
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "mochaExplorer.timeout": 20000,
+  // "python.jediEnabled": false,
+  // "python.languageServer": "Default",
+  "redhat.telemetry.enabled": false,
+  "solidity.telemetry": false,
+  // "solidity.compileUsingRemoteVersion": "v0.8.20+commit.a1b79de6",
+  "terminal.explorerKind": "external",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.scrollback": 10000,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "window.menuBarVisibility": "toggle",
+  // "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.editorAssociations": {
+    "*.html": "default"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.statusBar.visible": true
 }

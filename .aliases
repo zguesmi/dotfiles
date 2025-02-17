@@ -1,71 +1,79 @@
 #!/bin/sh
 
 # ------------------------------ #
-#         Good manners           #
+#           Overrides            #
 # ------------------------------ #
-alias plz="sudo"
-
-
-# ------------------------------ #
-#             Docker             #
-# ------------------------------ #
-dockerfile() { docker run --rm -v /var/run/docker.sock:/var/run/docker.sock chenzj/dfimage $(docker images --filter=reference=$1 --format "{{.ID}}") }
-# docker-compose
-alias dk="docker compose"
-# docker container
-alias dc="docker container"
-alias dcri="docker container run -it"
-alias dcrd="docker container run -d"
-alias dcei="docker container exec -it"
-alias dcls="docker container ls"
-alias dclsl="docker container ls -l"
-alias dclslq="docker container ls -l -q"
-alias dclsa="docker container ls -a"
-alias dclsaq="docker container ls -a -q"
-alias dcrm="docker container rm"
-alias dcip="docker container inspect --format '{{ .NetworkSettings.IPAddress }}' "
-dcrml() { if [ $(dclslq | wc -l) != 0 ]; then docker container rm $(dclslq); fi }
-dcrma() { if [ $(dclsaq | wc -l) != 0 ]; then docker container rm $(dclsaq); fi }
-dcrmaf() { if [ $(dclsaq | wc -l) != 0 ]; then docker container rm -f $(dclsaq); fi }
-# docker image
-alias di="docker image"
-alias dils="docker image ls"
-alias dirm="docker image rm"
-alias disha="docker image inspect --format='{{ index .RepoDigests 0 }}'"
-# docker service
-alias ds="docker service"
-alias dsip="docker service inspect --format '{{ .NetworkSettings.IPAddress }}' "
-# docker network
-alias dn="docker network"
-# docker volume
-alias dv="docker volume"
-dockerfile() {
-    docker run \
-        -v /var/run/docker.sock:/var/run/docker.sock \
-        --rm chenzj/dfimage \
-        $(docker images --filter=reference=$1 --format "{{.ID}}")
-}
-
+# alias ls='exa'
+# alias cat='batcat'
+# alias df='duf'
+# alias du='du -h'
+# alias grep='ripgrep'
+# alias find='fd'
+# alias dud='du -d 1 -h'
+# alias duf='du -sh'
 
 # ------------------------------ #
 #              Git               #
 # ------------------------------ #
 alias gp='git pull && git fetch -p'
-alias gs='git status'
+
+# ------------------------------ #
+#              Git               #
+# ------------------------------ #
+alias npmc='npm run clean'
+alias npmb='npm run build'
+alias npmt='npm run test'
 
 
 # ------------------------------ #
 #            Hardhat             #
 # ------------------------------ #
-alias hh="npx hardhat"
-alias hhc="npx hardhat compile"
-alias hht="REPORT_GAS=true npx hardhat test"
+alias hh='npx hardhat'
+alias hhcl='npx hardhat clean'
+alias hhc='npx hardhat compile'
+alias hht='REPORT_GAS=true npx hardhat test'
 
+
+# ------------------------------ #
+#             Docker             #
+# ------------------------------ #
+# docker-compose
+alias dk='docker compose'
+# docker container
+alias dc='docker container'
+alias dcri='docker container run -it'
+alias dcei='docker container exec -it'
+alias dcls='docker container ls'
+# alias dclsl='docker container ls -l'
+alias dclsa='docker container ls -a'
+alias dclsaq='docker container ls -a -q'
+alias dcrm='docker container rm'
+alias dcip='docker container inspect --format '{{ .NetworkSettings.IPAddress }}' '
+dcrml() { if [ $(dcls -lq | wc -l) != 0 ]; then docker container rm $(dcls -lq); fi }
+dcrma() { if [ $(dclsaq | wc -l) != 0 ]; then docker container rm $(dclsaq); fi }
+dcrmaf() { if [ $(dclsaq | wc -l) != 0 ]; then docker container rm -f $(dclsaq); fi }
+# docker image
+alias di='docker image'
+alias dils='docker image ls'
+alias dirm='docker image rm'
+alias disha="docker image inspect --format='{{ index .RepoDigests 0 }}'"
+# docker service
+# alias ds='docker service'
+# alias dsip="docker service inspect --format '{{ .NetworkSettings.IPAddress }}' "
+# docker network
+alias dn='docker network'
+# docker volume
+alias dv='docker volume'
+dockerfile() {
+    docker run \
+        --rm \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        chenzj/dfimage $(docker images --filter=reference=$1 --format "{{.ID}}")
+}
 
 # ------------------------------ #
 #        Blockchain RPC          #
 # ------------------------------ #
-
 rpc() {
     curl -s -X POST \
         --header "Content-Type: application/json" \
@@ -79,43 +87,18 @@ lastblock() {
 lastblocknumber() {
     rpc $1 'eth_getBlockByNumber' '["latest", false]' | jq .result.number | xargs printf '%d\n'
 }
-lastblockhash() {
-    rpc $1 'eth_getBlockByNumber' '["latest", false]' | jq .result.hash
-}
-issyncing() {
-    rpc $1 "eth_syncing" "[]" | jq .result
-}
-
 
 # ------------------------------ #
 #              Misc              #
 # ------------------------------ #
-alias upd="sudo apt update"
-alias upg="sudo apt -y upgrade"
-alias updg="sudo apt update && sudo apt -y upgrade"
-alias zshrc="vim ~/.zshrc"
-alias sourcez="source ~/.zshrc"
-alias pingd="ping duckduckgo.com"
+tempdir() { cd $(mktemp -d) }
+alias pingb='ping brave.com'
 alias tohex="printf '%x\n'"
 alias todec="printf '%d\n'"
-alias cpssh="cat ~/.ssh/id_rsa.pub | clipcp"
-# alias dud="du -d 1 -h"
-# alias duf="du -sh"
-# alias https="http --default-scheme=https"
-alias brave="brave-browser"
-alias zshconf="vim ~/.zshrc"
-alias vimconf="vim ~/.vimrc"
-# alias vscconf="vim ~/.config/Code"
-alias x="xclip -selection clipboard -in"          # cut to clipboard
-alias v="xclip -selection clipboard -out"         # paste from clipboard
-alias c="xclip -selection clipboard -in -filter"  # copy clipboard
-# ddccontrol
-alias vscodium="GTK_IM_MODULE=xim codium --extensions-dir ~/.config/VSCodium/User/extensions"
-alias code="vscodium"
-alias dotfiles="vscodium ~/dotfiles"
-tempdir() { cd $(mktemp -d) }
-alias bat="batcat"
-# networking
-alias myip="curl https://ipinfo.io/ip; echo"
-alias du="duf"
-alias tophistory='history | sed "s/^ *//" | cut -d" " -f2- | sort | uniq -c | sort -nr | head -n 30'
+alias https='http --default-scheme=https'
+alias c='xclip -selection clipboard -in -filter'  # copy clipboard
+alias x='xclip -selection clipboard -in'          # cut to clipboard
+alias v='xclip -selection clipboard -out'         # paste from clipboard
+alias codium='GTK_IM_MODULE=xim codium --extensions-dir ~/.config/VSCodium/User/extensions'
+alias dotfiles='codium ~/dotfiles'
+alias myip='curl https://ipinfo.io/ip; echo'
