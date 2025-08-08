@@ -36,3 +36,13 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --height 90% --layout=reverse --borde
 # Source other aliases.
 export IEXEC_DEV="${HOME}/iexec/dev"
 [ -d "${IEXEC_DEV}/iexec-deploy" ] && source ${IEXEC_DEV}/iexec-deploy/devtools/.aliases
+
+# pnpm
+export PNPM_HOME="/home/zied/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+. "$HOME/.cargo/env"

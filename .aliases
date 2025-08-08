@@ -12,6 +12,8 @@
 # alias dud='du -d 1 -h'
 # alias duf='du -sh'
 
+alias act='~/bin/act'
+
 # ------------------------------ #
 #              Git               #
 # ------------------------------ #
@@ -29,10 +31,16 @@ alias npmt='npm run test'
 #            Hardhat             #
 # ------------------------------ #
 alias hh='npx hardhat'
-alias hhcl='npx hardhat clean'
 alias hhc='npx hardhat compile'
-alias hht='REPORT_GAS=true npx hardhat test'
+alias hht='npx hardhat test'
+alias hhcl='npx hardhat clean'
 
+# ------------------------------ #
+#            Foundry             #
+# ------------------------------ #
+alias fgc='forge compile'
+alias fgt='forge test -vvv'
+alias fgcl='forge clean'
 
 # ------------------------------ #
 #             Docker             #
