@@ -96,6 +96,7 @@ function install_apps() {
     sudo snap install slack
     log "Bitwarden"
     sudo snap install bitwarden
+    sudo snap install notesnook
 }
 
 function print_post_install_instructions() {
@@ -106,6 +107,10 @@ function print_post_install_instructions() {
     echo "Vimium https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb"
     echo "Gnome https://chromewebstore.google.com/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep"
     echo "Night theme https://extensions.gnome.org/extension/2236/night-theme-switcher/"
+
+    # VLC, BalenaEtcher, Onetab import
+    # VPN
+
 }
 
 function main() {
@@ -130,6 +135,14 @@ function main() {
 
     # Use SSH connection.
     git remote set-url origin git@github.com:zguesmi/dotfiles.git
+
+    # TODO install github CLI
+    # https://github.com/cli/cli/blob/trunk/docs/install_linux.md
+
+    # TODO Install foundry
+    # https://book.getfoundry.sh/getting-started/installation
+
+    # curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
 }
 
 main
