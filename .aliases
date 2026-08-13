@@ -20,12 +20,14 @@ alias act='~/bin/act'
 alias gp='git pull && git fetch -p'
 
 # ------------------------------ #
-#              Git               #
+#          NPM & PNPM            #
 # ------------------------------ #
 alias npmc='npm run clean'
+alias pnpmc='pnpm run clean'
 alias npmb='npm run build'
+alias pnpmb='pnpm run build'
 alias npmt='npm run test'
-
+alias pnpmt='pnpm run test'
 
 # ------------------------------ #
 #            Hardhat             #
