@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/OpenWhispr/open-whispr
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=OpenWhispr
+Name=OpenWhispr
+Comment[en_US]=
+Comment=
